@@ -43,17 +43,21 @@ const SignUp = () => {
     await signIn('credentials', { callbackUrl: '/add', ...data });
   };
 
+  const padBelow = { marginBottom: '15pt' };
+  const tightenBelow = { marginBottom: '-3pt' };
+
   return (
     <main>
-      <Container>
+      <Container style={{ opacity: 0.75, paddingTop: '6%' }}>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <h1 className="text-center">Sign Up</h1>
             <Card>
               <Card.Body>
+                <h1 style={padBelow}>Panicker Application</h1>
+                {/* <hr style={{ margin: '10pt 0 20pt 0' }} /> */}
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="form-group">
-                    <Form.Label>Email</Form.Label>
+                  <Form.Group className="form-group" style={padBelow}>
+                    <Form.Label style={tightenBelow}>Email</Form.Label>
                     <input
                       type="text"
                       {...register('email')}
@@ -62,8 +66,8 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
 
-                  <Form.Group className="form-group">
-                    <Form.Label>Password</Form.Label>
+                  <Form.Group className="form-group" style={padBelow}>
+                    <Form.Label style={tightenBelow}>Password</Form.Label>
                     <input
                       type="password"
                       {...register('password')}
@@ -72,7 +76,7 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
                   <Form.Group className="form-group">
-                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Label style={tightenBelow}>Confirm Password</Form.Label>
                     <input
                       type="password"
                       {...register('confirmPassword')}
@@ -97,7 +101,7 @@ const SignUp = () => {
                 </Form>
               </Card.Body>
               <Card.Footer>
-                Already have an account?
+                Already have an account?&nbsp;
                 <a href="/auth/signin">Sign in</a>
               </Card.Footer>
             </Card>

@@ -3,9 +3,9 @@
 ## Milestone 1
 Complete By: 🚨 Thursday, November 21, 2024 🚨
 ### To-Do Checklist
-- [ ] System deployed to Vercel.
+- [x] System deployed to Vercel.
 - [ ] Landing page.
-- [ ] Mockups of at least four other pages.
+- [x] Mockups of at least four other pages.
 
 ### Project Homepage Update
 - [ ] A link to the GitHub organization associated with this project and all of its repositories.
@@ -18,8 +18,15 @@ Complete By: 🚨 Thursday, November 21, 2024 🚨
 
 ## Milestone 2
 Complete By: 🚨 Tuesday, December 3, 2024 🚨
-- [ ] 
+### To-Do Checklist
+- [ ] Four pages in addition to the Landing page should be available in the deployment. (The Sign In/Register pages provided as part of the template don’t count)
+- [ ] At least one page in the deployment should read data from the database (i.e. from MiniMongo).
+- [ ] At least one page in the deployment should write data to the database (i.e. using a form).
 
 ## Milestone 3
 Complete By: 🚨 Thursday, December 12, 2024 🚨
-- [ ] 
+### To-Do Checklist
+- [ ] Use GitHub issues and a GitHub project called “M3” to manage the development of this release of the system.
+- [ ] Use Issue Driven Project Management practices.
+- [ ] Update your organization’s GitHub Page to document the current version of your system following GitHub hosting guidelines.
+- [ ] All branches are named according to IDPM guidelines.

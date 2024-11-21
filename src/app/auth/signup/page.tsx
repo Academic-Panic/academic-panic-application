@@ -44,7 +44,7 @@ const SignUp = () => {
   };
 
   const padBelow = { marginBottom: '15pt' };
-  const tightenBelow = { marginBottom: '-3pt' };
+  // const tightenBelow = { marginBottom: '-3pt' };
 
   return (
     <main>
@@ -54,33 +54,32 @@ const SignUp = () => {
             <Card>
               <Card.Body>
                 <h1 style={padBelow}>Panicker Application</h1>
-                {/* <hr style={{ margin: '10pt 0 20pt 0' }} /> */}
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   <Form.Group className="form-group" style={padBelow}>
-                    <Form.Label style={tightenBelow}>Email</Form.Label>
                     <input
                       type="text"
                       {...register('email')}
                       className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                      placeholder="Email"
                     />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
 
                   <Form.Group className="form-group" style={padBelow}>
-                    <Form.Label style={tightenBelow}>Password</Form.Label>
                     <input
                       type="password"
                       {...register('password')}
                       className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                      placeholder="Password"
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
                   <Form.Group className="form-group">
-                    <Form.Label style={tightenBelow}>Confirm Password</Form.Label>
                     <input
                       type="password"
                       {...register('confirmPassword')}
                       className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                      placeholder="Confirm Password"
                     />
                     <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                   </Form.Group>

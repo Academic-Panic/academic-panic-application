@@ -7,7 +7,7 @@ body {
   margin: 0;
   --bs-dark: var(--nat-navbar-bg);
   --bs-dark-rgb: var(--nat-navbar-bg-rgb);
-  background: url('../../public/LofiGalaxy.gif'); /* Specify the image path */
+  background: url('../../public/AcademicPanic.png'); /* Specify the image path */
   background-size: cover; /* Ensures the image covers the entire background */
 }
 .wrapper {
@@ -18,10 +18,10 @@ body {
 }
 
 :root {
-  --nat-navbar-bg: rgb(161, 52, 235); /* Dark blue */
-  --nat-navbar-bg-rgb: 161, 52, 235; /* RGB value for dark blue */
-  --nat-navbar-text-color: white; /* Text color for navbar and footer */
-  --nat-navbar-highlight-text: khaki; /* Highlight color for active items */
+  --nat-navbar-bg: rgba(255, 255, 255, 0.5); 
+  --nat-navbar-bg-rgb: 255, 255, 255;
+  --nat-navbar-text-color: rgb(0, 0, 0); /* Text color for navbar and footer */
+  --nat-navbar-highlight-text: rgb(182, 172, 79); /* Highlight color for active items */
 }
 
 footer, footer a {
@@ -48,8 +48,16 @@ body .navbar {
   color: white;
 }
 
+.text-black {
+  color: black;
+}
+
+.text-gold {
+  color: rgb(182, 172, 79);
+}
+
 .text-box {
-  background-color: rgba(0, 0, 0, 0.8); /* Solid box background */
+  background-color: rgba(255, 255, 255, 0.8); /* Solid box background */
   border-radius: 10px; /* Rounded corners */
   max-width: 600px; /* Box width */
   width: 100%; /* Ensure responsiveness */

@@ -12,6 +12,10 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Email and Password',
       credentials: {
+        username: {
+          label: 'Username',
+          type: 'username',
+        },
         email: {
           label: 'Email',
           type: 'email',

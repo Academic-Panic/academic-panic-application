@@ -12,17 +12,17 @@ async function main() {
     if (account.role === 'ADMIN') {
       role = 'ADMIN';
     }
-    console.log(`  Creating user: ${account.email} with role: ${role}`);
+    console.log(`Creating user ${account.username} at ${account.email} with role: ${role}`);
     await prisma.user.upsert({
       where: { email: account.email },
       update: {},
       create: {
+        username: account.username,
         email: account.email,
         password,
         role,
       },
     });
-    // console.log(`  Created user: ${user.email} with role: ${user.role}`);
   });
   config.defaultData.forEach(async (data, index) => {
     let condition: Condition = 'good';
@@ -33,7 +33,7 @@ async function main() {
     } else {
       condition = 'fair';
     }
-    console.log(`  Adding stuff: ${data.name} (${data.owner})`);
+    console.log(`Adding stuff: ${data.name} (${data.owner})`);
     await prisma.stuff.upsert({
       where: { id: index + 1 },
       update: {},

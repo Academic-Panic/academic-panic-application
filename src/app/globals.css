@@ -26,6 +26,7 @@ body {
 
 footer, footer a {
   color: var(--nat-navbar-text-color);
+  opacity: 0.8;
 }
 
 body .navbar {
@@ -34,6 +35,7 @@ body .navbar {
   --bs-navbar-brand-hover-color: var(--nat-navbar-highlight-text);
   --bs-navbar-color: var(--nat-navbar-text-color);
   --bs-navbar-hover-color: var(--nat-navbar-highlight-text);
+  opacity: 0.8;
 }
 
 .bg-dark a.dropdown-item {

@@ -1,8 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// This is your Prisma schema file; see https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Models will precede enums, as definition order doesn't appear to affect
+// functionality past the generator and datasource
 
 generator client {
   provider = "prisma-client-js"
@@ -17,17 +16,50 @@ datasource db {
   // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
+// @brief Contains all the information needed to generate the web interface for the
+// user, such as courses, collection of friends with requests sent, etc.
+// 
+// @details IDs are a necessity to distinguish different models of the same type,
+// and may thus be attached to all models (not just users, which have a
+// practical application for IDs).
 model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   email    String @unique
   password String
   role     Role   @default(USER)
+  // courses          Course[]
+  // friendsRequested Int[] // "Friendships" will be computed when requested
+
+  // TODO: Write an isFriends() function to determine to help document the
+  // rationale behind having requested friends stored instead of current friends
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// // @brief Information needed to yield a course that a user has recorded
+// // 
+// // @details Like the `User` model, this one needs an ID to ensure uniqueness
+// // across different instantiations.
+// //
+// // @details Note the inclusion of a user, which determines who
+// model Course {
+//   id     Int   @id @default(autoincrement())
+//   user   User @relation(fields: [userId], references: [id])
+// }
+
+// Will assume that the model for `Stuff` will be the baseline for "courses."
+// TODO: Eventually create something in the style of `Stuff` to hold a global
+// list of sessions planned.
+model Stuff {
+  id        Int       @id @default(autoincrement())
+  name      String
+  quantity  Int
+  condition Condition
+  owner     String
 }
 
 enum Condition {
@@ -35,12 +67,4 @@ enum Condition {
   good
   fair
   poor
-}
-
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
 }

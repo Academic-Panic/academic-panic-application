@@ -14,7 +14,9 @@ async function main() {
     }
     console.log(`Creating user ${account.username} at ${account.email} with role: ${role}`);
     await prisma.user.upsert({
-      // Rationale for key. Compound uniqueness concatenates fields with underscores.
+      // NOTE: Compound uniqueness concatenates fields with underscores. See
+      // https://www.prisma.io/docs/orm/prisma-schema/data-model/models#defining-a-unique-field
+      // for more information
       where: { username_email: { username: account.username, email: account.email } },
       update: {},
       create: {

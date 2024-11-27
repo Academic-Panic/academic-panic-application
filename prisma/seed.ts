@@ -16,8 +16,9 @@ async function main() {
     await prisma.user.upsert({
       // NOTE: Compound uniqueness concatenates fields with underscores. See
       // https://www.prisma.io/docs/orm/prisma-schema/data-model/models#defining-a-unique-field
-      // for more information
-      where: { username_email: { username: account.username, email: account.email } },
+      // for more information. Multi-IDs require unique combinations, and are
+      // less strict as a result
+      where: { email: account.email },
       update: {},
       create: {
         username: account.username,

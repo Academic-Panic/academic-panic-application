@@ -43,10 +43,14 @@ enum Role {
 // @brief Information needed to yield a course that users have taken
 model Course {
   id         Int      @id @default(autoincrement())
-  user       User[]
+  title      String
+  section    Int
   semester   Semester
   year       Int
   instructor String
+  user       User[]
+
+  @@unique([title, section, semester, year, instructor])
 }
 
 enum Semester {
@@ -55,20 +59,20 @@ enum Semester {
   Fall
 }
 
-// Will assume that the model for `Stuff` will be the baseline for "courses."
-// TODO: Eventually create something in the style of `Stuff` to hold a global
-// list of sessions planned.
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
-}
+// // Will assume that the model for `Stuff` will be the baseline for "courses."
+// // TODO: Eventually create something in the style of `Stuff` to hold a global
+// // list of sessions planned.
+// model Stuff {
+//   id        Int       @id @default(autoincrement())
+//   name      String
+//   quantity  Int
+//   condition Condition
+//   owner     String
+// }
 
-enum Condition {
-  excellent
-  good
-  fair
-  poor
-}
+// enum Condition {
+//   excellent
+//   good
+//   fair
+//   poor
+// }

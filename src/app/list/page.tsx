@@ -15,30 +15,27 @@ const ListPage = async () => {
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  const owner = (session && session.user && session.user.email) || '';
-  const stuff = await prisma.stuff.findMany({
-    where: {
-      owner,
-    },
-  });
+  // const owner = (session && session.user && session.user.email) || '';
+  const courses = await prisma.course.findMany();
   // console.log(stuff);
   return (
     <main>
-      <Container id="list" fluid className="py-3">
+      <Container id="list" fluid className="p-4">
         <Row>
           <Col>
-            <h1>Stuff</h1>
+            <h1 className="text-white text-center">Courses</h1>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Quantity</th>
-                  <th>Condition</th>
-                  <th>Actions</th>
+                  <th>Title</th>
+                  <th>Section</th>
+                  <th>Semester</th>
+                  <th>Year</th>
+                  <th>Instructor</th>
                 </tr>
               </thead>
               <tbody>
-                {stuff.map((item) => (
+                {courses.map((item) => (
                   <StuffItem key={item.id} {...item} />
                 ))}
               </tbody>

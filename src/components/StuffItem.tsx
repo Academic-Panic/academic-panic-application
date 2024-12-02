@@ -1,15 +1,16 @@
-import { Stuff } from '@prisma/client';
+import { Course } from '@prisma/client';
 import Link from 'next/link';
 
 /* Renders a single row in the List Stuff table. See list/page.tsx. */
-const StuffItem = ({ name, quantity, condition, id }: Stuff) => (
+const StuffItem = ({ id, title, section, semester, year, instructor }: Course) => (
   <tr>
-    <td>{name}</td>
-    <td>{quantity}</td>
-    <td>{condition}</td>
     <td>
-      <Link href={`/edit/${id}`}>Edit</Link>
+      <Link href={`/edit/${id}`}>{title}</Link>
     </td>
+    <td>{section}</td>
+    <td>{semester}</td>
+    <td>{year}</td>
+    <td>{instructor}</td>
   </tr>
 );
 

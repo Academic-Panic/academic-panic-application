@@ -23,10 +23,10 @@ const NavBar: React.FC = () => {
             {currentUser
               ? [
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Create Session
+                    Create Course
                   </Nav.Link>,
                   <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                    Find Session
+                    List Courses
                   </Nav.Link>,
                 ]
               : ''}

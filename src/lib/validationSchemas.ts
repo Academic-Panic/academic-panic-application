@@ -24,4 +24,11 @@ export const AddCourseSchema = Yup.object({
   instructor: Yup.string().required(),
 });
 
-export const EditCourseSchema = AddCourseSchema;
+export const EditCourseSchema = Yup.object({
+  id: Yup.number().required(),
+  title: Yup.string().required().matches(/^\w+[- ]\d+$/, 'Alphabetical, space/hyphen, numerical'),
+  section: Yup.number().positive().required(),
+  semester: Yup.string().oneOf(['Spring', 'Summer', 'Fall']).required(),
+  year: Yup.number().positive().required(),
+  instructor: Yup.string().required(),
+});

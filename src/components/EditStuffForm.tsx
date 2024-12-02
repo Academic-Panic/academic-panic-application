@@ -4,26 +4,26 @@ import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Stuff } from '@prisma/client';
-import { EditStuffSchema } from '@/lib/validationSchemas';
-import { editStuff } from '@/lib/dbActions';
+import { Course } from '@prisma/client';
+import { EditCourseSchema } from '@/lib/validationSchemas';
+import { editCourse } from '@/lib/dbActions';
 
-const onSubmit = async (data: Stuff) => {
+const onSubmit = async (data: Course) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await editStuff(data);
+  await editCourse(data);
   swal('Success', 'Your item has been updated', 'success', {
     timer: 2000,
   });
 };
 
-const EditStuffForm = ({ stuff }: { stuff: Stuff }) => {
+const EditCourseForm = ({ course }: { course: Course }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Stuff>({
-    resolver: yupResolver(EditStuffSchema),
+  } = useForm<Course>({
+    resolver: yupResolver(EditCourseSchema),
   });
   // console.log(stuff);
 
@@ -32,48 +32,73 @@ const EditStuffForm = ({ stuff }: { stuff: Stuff }) => {
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
-            <h2>Edit Stuff</h2>
+            <h2 className="text-white">Edit Course</h2>
           </Col>
           <Card>
             <Card.Body>
+              <Form.Group>
+                {/* Hidden input to preserve ID in course creation */}
+                <input
+                  type="hidden"
+                  defaultValue={course.id}
+                  {...register('id')}
+                  className={`form-control ${errors.id ? 'is-invalid' : ''}`}
+                />
+                <div className="invalid-feedback">{errors.id?.message}</div>
+              </Form.Group>
               <Form onSubmit={handleSubmit(onSubmit)}>
-                <input type="hidden" {...register('id')} value={stuff.id} />
                 <Form.Group>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Title</Form.Label>
                   <input
                     type="text"
-                    {...register('name')}
-                    defaultValue={stuff.name}
-                    required
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    defaultValue={course.title}
+                    {...register('title')}
+                    className={`form-control ${errors.title ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <div className="invalid-feedback">{errors.title?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Quantity</Form.Label>
+                  <Form.Label>Section</Form.Label>
                   <input
                     type="number"
-                    {...register('quantity')}
-                    defaultValue={stuff.quantity}
-                    className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
+                    defaultValue={course.section}
+                    {...register('section')}
+                    className={`form-control ${errors.section ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.quantity?.message}</div>
+                  <div className="invalid-feedback">{errors.section?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Condition</Form.Label>
+                  <Form.Label>Semester</Form.Label>
                   <select
-                    {...register('condition')}
-                    className={`form-control ${errors.condition ? 'is-invalid' : ''}`}
-                    defaultValue={stuff.condition}
+                    {...register('semester')}
+                    className={`form-control ${errors.semester ? 'is-invalid' : ''}`}
+                    defaultValue={course.semester}
                   >
-                    <option value="excellent">Excellent</option>
-                    <option value="good">Good</option>
-                    <option value="fair">Fair</option>
-                    <option value="poor">Poor</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
                   </select>
-                  <div className="invalid-feedback">{errors.condition?.message}</div>
+                  <div className="invalid-feedback">{errors.semester?.message}</div>
                 </Form.Group>
-                <input type="hidden" {...register('owner')} value={stuff.owner} />
+                <Form.Group>
+                  <Form.Label>Year</Form.Label>
+                  <input
+                    type="number"
+                    defaultValue={course.year}
+                    {...register('year')}
+                    className={`form-control ${errors.year ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback">{errors.year?.message}</div>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Instructor</Form.Label>
+                  <input
+                    defaultValue={course.instructor}
+                    {...register('instructor')}
+                    className={`form-control ${errors.instructor ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback">{errors.instructor?.message}</div>
+                </Form.Group>
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -97,4 +122,4 @@ const EditStuffForm = ({ stuff }: { stuff: Stuff }) => {
   );
 };
 
-export default EditStuffForm;
+export default EditCourseForm;

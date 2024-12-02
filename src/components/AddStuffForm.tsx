@@ -6,29 +6,33 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
 import { redirect } from 'next/navigation';
-import { addStuff } from '@/lib/dbActions';
+import { addCourse } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { AddStuffSchema } from '@/lib/validationSchemas';
+import { AddCourseSchema } from '@/lib/validationSchemas';
+import { Semester } from '@prisma/client';
 
-const onSubmit = async (data: { name: string; quantity: number; owner: string; condition: string }) => {
+const onSubmit = async (data: {
+  title: string; section: number; semester: Semester; year: number; instructor: string;
+}) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await addStuff(data);
+  await addCourse(data);
   swal('Success', 'Your item has been added', 'success', {
     timer: 2000,
   });
 };
 
-const AddStuffForm: React.FC = () => {
+const AddCourseForm: React.FC = () => {
   const { data: session, status } = useSession();
+  console.log(session); // TODO: use session data properly to avoid ESLint errors
   // console.log('AddStuffForm', status, session);
-  const currentUser = session?.user?.email || '';
+  // const currentUser = session?.user?.email || '';
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(AddStuffSchema),
+    resolver: yupResolver(AddCourseSchema),
   });
   if (status === 'loading') {
     return <LoadingSpinner />;
@@ -42,40 +46,55 @@ const AddStuffForm: React.FC = () => {
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
-            <h2>Add Stuff</h2>
+            <h2 className="text-white">Add Course</h2>
           </Col>
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>Title</Form.Label>
                   <input
                     type="text"
-                    {...register('name')}
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    {...register('title')}
+                    className={`form-control ${errors.title ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <div className="invalid-feedback">{errors.title?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Quantity</Form.Label>
+                  <Form.Label>Section</Form.Label>
                   <input
                     type="number"
-                    {...register('quantity')}
-                    className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
+                    {...register('section')}
+                    className={`form-control ${errors.section ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.quantity?.message}</div>
+                  <div className="invalid-feedback">{errors.section?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Condition</Form.Label>
-                  <select {...register('condition')} className={`form-control ${errors.condition ? 'is-invalid' : ''}`}>
-                    <option value="excellent">Excellent</option>
-                    <option value="good">Good</option>
-                    <option value="fair">Fair</option>
-                    <option value="poor">Poor</option>
+                  <Form.Label>Semester</Form.Label>
+                  <select {...register('semester')} className={`form-control ${errors.semester ? 'is-invalid' : ''}`}>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
                   </select>
-                  <div className="invalid-feedback">{errors.condition?.message}</div>
+                  <div className="invalid-feedback">{errors.semester?.message}</div>
                 </Form.Group>
-                <input type="hidden" {...register('owner')} value={currentUser} />
+                <Form.Group>
+                  <Form.Label>Year</Form.Label>
+                  <input
+                    type="number"
+                    {...register('year')}
+                    className={`form-control ${errors.year ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback">{errors.year?.message}</div>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Instructor</Form.Label>
+                  <input
+                    {...register('instructor')}
+                    className={`form-control ${errors.instructor ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback">{errors.instructor?.message}</div>
+                </Form.Group>
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -99,4 +118,4 @@ const AddStuffForm: React.FC = () => {
   );
 };
 
-export default AddStuffForm;
+export default AddCourseForm;

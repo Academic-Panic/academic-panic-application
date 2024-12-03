@@ -3,7 +3,7 @@ import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import AddCourseForm from '@/components/AddStuffForm';
 
-const AddStuff = async () => {
+const AddSession = async () => {
   // Protect the page, only logged in users can access it.
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
@@ -18,4 +18,4 @@ const AddStuff = async () => {
   );
 };
 
-export default AddStuff;
+export default AddSession;

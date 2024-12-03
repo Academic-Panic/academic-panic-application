@@ -32,3 +32,20 @@ export const EditCourseSchema = Yup.object({
   year: Yup.number().positive().required(),
   instructor: Yup.string().required(),
 });
+
+export const AddSessionSchema = Yup.object({
+  courseID: Yup.number().positive().required(), // Temporary measure to quickly allow for course input
+  location: Yup.string().oneOf(['ICSpace', 'POST 2nd Floor', 'Computer Lab', 'Hamilton Library']).required(),
+  date: Yup.string().required(),
+  desc: Yup.string().required(),
+  partySize: Yup.number().positive().required(),
+});
+
+export const EditSessionSchema = Yup.object({
+  id: Yup.number().required(),
+  courseID: Yup.number().positive().required(), // Temporary measure to quickly allow for course input
+  location: Yup.string().oneOf(['ICSpace', 'POST 2nd Floor', 'Computer Lab', 'Hamilton Library']).required(),
+  date: Yup.string().required(),
+  desc: Yup.string().required(),
+  partySize: Yup.number().positive().required(),
+});

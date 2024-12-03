@@ -1,30 +1,33 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Course, Semester } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 /**
  * Adds a new stuff to the database.
- * @param stuff, an object with the following properties: name, quantity, owner, condition.
+ * @param course, an object with the following properties: name, quantity, owner, condition.
  */
-export async function addStuff(stuff: { name: string; quantity: number; owner: string; condition: string }) {
+export async function addCourse(course: {
+  title: string; section: number; semester: Semester; year: number; instructor: string
+}) {
   // console.log(`addStuff data: ${JSON.stringify(stuff, null, 2)}`);
-  let condition: Condition = 'good';
-  if (stuff.condition === 'poor') {
-    condition = 'poor';
-  } else if (stuff.condition === 'excellent') {
-    condition = 'excellent';
-  } else {
-    condition = 'fair';
-  }
-  await prisma.stuff.create({
+  // let condition: Term = 'Spring';
+  // if (course.term === 'Fall') {
+  //   condition = 'Fall';
+  // } else if (course.term === 'excellent') {
+  //   condition = 'excellent';
+  // } else {
+  //   condition = 'fair';
+  // }
+  await prisma.course.create({
     data: {
-      name: stuff.name,
-      quantity: stuff.quantity,
-      owner: stuff.owner,
-      condition,
+      title: course.title,
+      section: course.section,
+      semester: course.semester,
+      year: course.year,
+      instructor: course.instructor,
     },
   });
   // After adding, redirect to the list page
@@ -35,15 +38,16 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
  * Edits an existing stuff in the database.
  * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
  */
-export async function editStuff(stuff: Stuff) {
+export async function editCourse(course: Course) {
   // console.log(`editStuff data: ${JSON.stringify(stuff, null, 2)}`);
-  await prisma.stuff.update({
-    where: { id: stuff.id },
+  await prisma.course.update({
+    where: { id: course.id },
     data: {
-      name: stuff.name,
-      quantity: stuff.quantity,
-      owner: stuff.owner,
-      condition: stuff.condition,
+      title: course.title,
+      section: course.section,
+      semester: course.semester,
+      year: course.year,
+      instructor: course.instructor,
     },
   });
   // After updating, redirect to the list page
@@ -54,9 +58,9 @@ export async function editStuff(stuff: Stuff) {
  * Deletes an existing stuff from the database.
  * @param id, the id of the stuff to delete.
  */
-export async function deleteStuff(id: number) {
+export async function deleteCourse(id: number) {
   // console.log(`deleteStuff id: ${id}`);
-  await prisma.stuff.delete({
+  await prisma.course.delete({
     where: { id },
   });
   // After deleting, redirect to the list page
@@ -67,11 +71,12 @@ export async function deleteStuff(id: number) {
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
  */
-export async function createUser(credentials: { email: string; password: string }) {
+export async function createUser(credentials: { username: string, email: string; password: string }) {
   // console.log(`createUser data: ${JSON.stringify(credentials, null, 2)}`);
   const password = await hash(credentials.password, 10);
   await prisma.user.create({
     data: {
+      username: credentials.username,
       email: credentials.email,
       password,
     },

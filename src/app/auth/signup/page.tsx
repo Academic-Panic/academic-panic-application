@@ -48,8 +48,7 @@ const SignUp = () => {
     await signIn('credentials', { callbackUrl: '/add', ...data });
   };
 
-  const padBelow = { marginBottom: '15pt' };
-  // const tightenBelow = { marginBottom: '-3pt' };
+  const padBelow = { marginBottom: '15pt' }; // Style to provide fixed padding
 
   return (
     <main>

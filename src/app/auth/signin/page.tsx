@@ -24,22 +24,34 @@ const SignIn = () => {
     }
   };
 
+  const padBelow = { marginBottom: '15pt' }; // Style to provide fixed padding
+
   return (
     <main>
-      <Container>
+      <Container style={{ opacity: 0.75, paddingTop: '6%' }}>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <h1 className="text-center">Panicker Application</h1>
             <Card>
               <Card.Body>
+                <h1 style={padBelow}>Panicker Login</h1>
                 <Form method="post" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
-                    <input name="email" type="text" className="form-control" />
+                    <input
+                      name="email"
+                      style={padBelow}
+                      type="text"
+                      className="form-control"
+                      placeholder="Email"
+                    />
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <input name="password" type="password" className="form-control" />
+                    <input
+                      name="password"
+                      style={padBelow}
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                    />
                   </Form.Group>
                   <Button type="submit" className="mt-3">
                     Sign In

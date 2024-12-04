@@ -1,7 +1,7 @@
 name: ci-nextjs-application-template
 on:
   push:
-    branches: [main, master, issue-24]
+    branches: [main, master]
   pull_request:
     branches: [main, master]
 env:
@@ -10,7 +10,7 @@ env:
   NEXTAUTH_URL: http://localhost:3000
   POSTGRES_HOST: postgres
 jobs:
-  test:
+  Lint and Playwright:
     services:
       postgres:
         image: postgres

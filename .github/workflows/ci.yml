@@ -10,7 +10,7 @@ env:
   NEXTAUTH_URL: http://localhost:3000
   POSTGRES_HOST: postgres
 jobs:
-  Lint and Playwright:
+  test:
     services:
       postgres:
         image: postgres

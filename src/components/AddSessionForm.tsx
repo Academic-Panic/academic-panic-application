@@ -13,7 +13,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddSessionSchema } from '@/lib/validationSchemas';
 import { Location } from '@prisma/client';
 
-const onSubmit = async (session: { courseID: number; location: Location; date: Date; desc: string; partySize: number; id: number; }) => {
+const onSubmit = async (session: { courseID: number; location: Location; date: string; desc: string; partySize: number }) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
   await addSession(session);
   swal('Success', 'Your course has been added', 'success', {
@@ -79,10 +79,10 @@ const AddSessionForm: React.FC = () => {
                 <Form.Group>
                   <Form.Label>Location</Form.Label>
                   <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
-                    <option value="POST_2nd_Floor">POST Study Lounge</option>
+                    {/* <option value="POST2ndFloor">POST Study Lounge</option> */}
                     <option value="ICSpace">ICSpace</option>
-                    <option value="Hamilton_Library">Hamilton Library</option>
-                    <option value="Computer_Lab">Computer Lab</option>
+                    {/* <option value="HamiltonLibrary">Hamilton Library</option> */}
+                    {/* <option value="ComputerLab">Computer Lab</option>        */}
                   </select>
                   <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>

@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 export async function addCourse(course: {
-  title: string; section: number; semester: Semester; year: number; instructor: string
+  title: string; section: number; semester: Semester; year: number; instructor: string; location: Location
 }) {
   await prisma.course.create({
     data: {
@@ -18,7 +18,7 @@ export async function addCourse(course: {
     },
   });
   // After adding, redirect to the list page
-  redirect('/list');
+  redirect('/listCourse');
 }
 
 export async function editCourse(course: Course) {
@@ -33,7 +33,7 @@ export async function editCourse(course: Course) {
     },
   });
   // After updating, redirect to the list page
-  redirect('/list');
+  redirect('/listCourse');
 }
 
 export async function deleteCourse(id: number) {
@@ -42,7 +42,7 @@ export async function deleteCourse(id: number) {
     where: { id },
   });
   // After deleting, redirect to the list page
-  redirect('/list');
+  redirect('/listCourse');
 }
 
 // TODO: Change date type to DateTime when possible
@@ -59,7 +59,7 @@ export async function addSession(session: {
     },
   });
   // After adding, redirect to the list page
-  redirect('/list');
+  redirect('/listSession');
 }
 
 export async function editSession(session: Session) {
@@ -74,7 +74,7 @@ export async function editSession(session: Session) {
     },
   });
   // After updating, redirect to the list page
-  redirect('/list');
+  redirect('/listSession');
 }
 
 export async function deleteSession(id: number) {
@@ -83,7 +83,7 @@ export async function deleteSession(id: number) {
     where: { id },
   });
   // After deleting, redirect to the list page
-  redirect('/list');
+  redirect('/listSession');
 }
 
 /**

@@ -43,14 +43,14 @@ enum Role {
 
 // @brief Information needed to yield a course that users have taken
 model Course {
-  id         Int       @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   title      String
   section    Int
   semester   Semester
   year       Int
   instructor String
   user       User[]
-  Session    Session[]
+  // Session    Session[]
 
   @@unique([title, section, semester, year, instructor])
 }
@@ -64,10 +64,10 @@ enum Semester {
 // @brief Information needed to yield a course that users have taken
 model Session {
   id        Int      @id @default(autoincrement())
-  course    Course   @relation(fields: [courseID], references: [id])
+  // course    Course @relation(fields: [courseID], references: [id])
   courseID  Int
   location  Location
-  date      DateTime
+  date      String
   desc      String
   partySize Int
   attendees User[]
@@ -75,9 +75,9 @@ model Session {
 
 enum Location {
   ICSpace
-  POST_2nd_Floor
-  Computer_Lab
-  Hamilton_Library
+  POST2ndFloor
+  ComputerLab
+  HamiltonLibrary
 }
 
 // // Will assume that the model for `Stuff` will be the baseline for "courses."

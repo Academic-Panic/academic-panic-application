@@ -5,7 +5,7 @@
 ## 1. Project Overview
 
 ### Mission Statement
--To help students transform their study habits by connecting them with peers for smarter, more effective learning through shared insights and collaborative teaching.
+- To help students transform their study habits by connecting them with peers for smarter, more effective learning through shared insights and collaborative teaching.
 
 ### Core Features
 - Creating, joining, and viewing study sessions.

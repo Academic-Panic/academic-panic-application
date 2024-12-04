@@ -64,8 +64,8 @@ enum Semester {
 // @brief Information needed to yield a course that users have taken
 model Session {
   id        Int      @id @default(autoincrement())
-  course    Course   @relation(fields: [courseId], references: [id])
-  courseId  Int
+  course    Course   @relation(fields: [courseID], references: [id])
+  courseID  Int
   location  Location
   date      DateTime
   desc      String

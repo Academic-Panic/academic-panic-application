@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser
               ? [
-                  <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
+                  <Nav.Link id="add-stuff-nav" href="/addCourse" key="addCourse" active={pathName === '/addCourse'}>
                     Create Course
                   </Nav.Link>,
                   <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>

@@ -23,12 +23,13 @@ datasource db {
 // and may thus be attached to all models (not just users, which have a
 // practical application for IDs).
 model User {
-  id       Int      @id @default(autoincrement())
-  username String   @unique
-  email    String   @unique
-  password String
-  role     Role     @default(USER)
-  courses  Course[]
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  courses   Course[]
+  sesssions Session[]
 
   // friendsRequested Int[] // "Friendships" will be computed when requested
   // TODO: Write an isFriends() function to determine to help document the
@@ -42,13 +43,14 @@ enum Role {
 
 // @brief Information needed to yield a course that users have taken
 model Course {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   title      String
   section    Int
   semester   Semester
   year       Int
   instructor String
   user       User[]
+  Session    Session[]
 
   @@unique([title, section, semester, year, instructor])
 }
@@ -57,6 +59,25 @@ enum Semester {
   Spring
   Summer
   Fall
+}
+
+// @brief Information needed to yield a course that users have taken
+model Session {
+  id        Int      @id @default(autoincrement())
+  course    Course   @relation(fields: [courseID], references: [id])
+  courseID  Int
+  location  Location
+  date      DateTime
+  desc      String
+  partySize Int
+  attendees User[]
+}
+
+enum Location {
+  ICSpace
+  POST_2nd_Floor
+  Computer_Lab
+  Hamilton_Library
 }
 
 // // Will assume that the model for `Stuff` will be the baseline for "courses."

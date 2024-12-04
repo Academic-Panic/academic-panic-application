@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 'use client';
 
 import { useSession } from 'next-auth/react';
@@ -6,29 +8,32 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
 import { redirect } from 'next/navigation';
-import { addStuff } from '@/lib/dbActions';
+import { addSession } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { AddStuffSchema } from '@/lib/validationSchemas';
+import { AddSessionSchema } from '@/lib/validationSchemas';
+import { Location } from '@prisma/client';
 
-const onSubmit = async (data: { name: string; quantity: number; owner: string; condition: string }) => {
+const onSubmit = async (session: { courseID: number; location: Location; date: Date; desc: string; partySize: number; id: number; }) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await addStuff(data);
-  swal('Success', 'Your item has been added', 'success', {
+  await addSession(session);
+  swal('Success', 'Your course has been added', 'success', {
     timer: 2000,
   });
 };
 
-const AddStuffForm: React.FC = () => {
+/// AddSessionForm is based on AddStuff Form
+const AddSessionForm: React.FC = () => {
   const { data: session, status } = useSession();
   // console.log('AddStuffForm', status, session);
   const currentUser = session?.user?.email || '';
+  console.log(currentUser);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(AddStuffSchema),
+    resolver: yupResolver(AddSessionSchema),
   });
   if (status === 'loading') {
     return <LoadingSpinner />;
@@ -47,44 +52,62 @@ const AddStuffForm: React.FC = () => {
             </Col>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
+                {/*
+                  /// @brief datetime-local allows users to input a date and time in
+                  /// the format of MM-DD-YYYY THH:MM
+                 */}
+                <Form.Group>
+                  <Form.Label>Date</Form.Label>
+                  <input
+                    type="datetime-local"
+                    {...register('date')}
+                    className={`form-control ${errors.date ? 'is-invalid' : ''}`}
+                  />
+                </Form.Group>
                 <Form.Group>
                   <Form.Label>Course</Form.Label>
                   <input
                     type="text"
-                    {...register('name')}
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    {...register('courseID')}
+                    className={`form-control ${errors.courseID ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <div className="invalid-feedback">{errors.courseID?.message}</div>
                 </Form.Group>
+                {/*
+                  // @brief The location is set as a dropdown menu with 4 pre-defined options
+                */}
                 <Form.Group>
                   <Form.Label>Location</Form.Label>
-                  <select {...register('condition')} className={`form-control ${errors.condition ? 'is-invalid' : ''}`}>
-                    <option value="Excellent">POST Study Lounge</option>
-                    <option value="Good">ICSpace</option>
-                    <option value="Fair">Hamilton Library</option>
-                    <option value="Poor">Other</option>
+                  <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
+                    <option value="POST_2nd_Floor">POST Study Lounge</option>
+                    <option value="ICSpace">ICSpace</option>
+                    <option value="Hamilton_Library">Hamilton Library</option>
+                    <option value="Computer_Lab">Computer Lab</option>
                   </select>
-                  <div className="invalid-feedback">{errors.condition?.message}</div>
+                  <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Max Party Size</Form.Label>
                   <input
                     type="number"
-                    {...register('quantity')}
-                    className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
+                    {...register('partySize')}
+                    className={`form-control ${errors.partySize ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.quantity?.message}</div>
+                  <div className="invalid-feedback">{errors.partySize?.message}</div>
                 </Form.Group>
+                {/*
+                  /// Provide a brief description of the session
+                  /// E.g. "Study for exam" or "Help with homework"
+                */}
                 <Form.Group>
                   <Form.Label>Description</Form.Label>
                   <input
                     type="text"
-                    {...register('name')}
-                    className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    {...register('desc')}
+                    className={`form-control ${errors.desc ? 'is-invalid' : ''}`}
                   />
-                  <div className="invalid-feedback">{errors.name?.message}</div>
+                  <div className="invalid-feedback">{errors.desc?.message}</div>
                 </Form.Group>
-                <input type="hidden" {...register('owner')} value={currentUser} />
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
@@ -108,4 +131,4 @@ const AddStuffForm: React.FC = () => {
   );
 };
 
-export default AddStuffForm;
+export default AddSessionForm;

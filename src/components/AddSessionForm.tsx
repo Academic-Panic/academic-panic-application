@@ -21,6 +21,7 @@ const onSubmit = async (session: { courseID: number; location: Location; date: D
   });
 };
 
+/// AddSessionForm is based on AddStuff Form
 const AddSessionForm: React.FC = () => {
   const { data: session, status } = useSession();
   // console.log('AddStuffForm', status, session);
@@ -72,13 +73,16 @@ const AddSessionForm: React.FC = () => {
                   />
                   <div className="invalid-feedback">{errors.courseID?.message}</div>
                 </Form.Group>
+                {/*
+                  // @brief The location is set as a dropdown menu with 4 pre-defined options
+                */}
                 <Form.Group>
                   <Form.Label>Location</Form.Label>
                   <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
-                    <option value="POST 2nd Floor">POST Study Lounge</option>
+                    <option value="POST_2nd_Floor">POST Study Lounge</option>
                     <option value="ICSpace">ICSpace</option>
-                    <option value="Hamilton Library">Hamilton Library</option>
-                    <option value="Computer Lab">Computer Lab</option>
+                    <option value="Hamilton_Library">Hamilton Library</option>
+                    <option value="Computer_Lab">Computer Lab</option>
                   </select>
                   <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
@@ -91,6 +95,10 @@ const AddSessionForm: React.FC = () => {
                   />
                   <div className="invalid-feedback">{errors.partySize?.message}</div>
                 </Form.Group>
+                {/*
+                  /// Provide a brief description of the session
+                  /// E.g. "Study for exam" or "Help with homework"
+                */}
                 <Form.Group>
                   <Form.Label>Description</Form.Label>
                   <input

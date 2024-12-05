@@ -25,7 +25,7 @@ const NavBar: React.FC = () => {
                   <Nav.Link id="add-stuff-nav" href="/addCourse" key="addCourse" active={pathName === '/addCourse'}>
                     Create Course
                   </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
+                  <Nav.Link id="list-stuff-nav" href="/listCourse" key="listCourse" active={pathName === '/listCourse'}>
                     List Courses
                   </Nav.Link>,
                 ]

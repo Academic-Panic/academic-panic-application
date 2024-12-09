@@ -11,9 +11,8 @@ import { redirect } from 'next/navigation';
 import { addSession } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddSessionSchema } from '@/lib/validationSchemas';
-import { Location } from '@prisma/client';
 
-const onSubmit = async (session: { courseID: number; location: Location; date: string; desc: string; partySize: number }) => {
+const onSubmit = async (session: { courseID: number; location: string; date: string; desc: string; partySize: number }) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
   await addSession(session);
   swal('Success', 'Your course has been added', 'success', {

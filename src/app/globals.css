@@ -65,3 +65,18 @@ body .navbar {
   width: 100%; /* Ensure responsiveness */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Shadow for depth */
 }
+
+.text-box2 {
+  background-color: rgba(255, 255, 255, 0.8); /* Solid box background */
+  border-radius: 10px; /* Rounded corners */
+  /* max-width: 600px; /* Box width */ 
+  width: 100%; /* Ensure responsiveness */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional: Shadow for depth */
+}
+
+@font-face {
+  font-family: 'AmollaRaspersItalic';
+  src: url('/fonts/AmollaRaspersItalic.ttf') format('truetype'); /* For .ttf */
+  font-weight: light; /* Optional: normal, bold, etc. */
+  font-style: normal;  /* Optional: normal, italic, etc. */
+}

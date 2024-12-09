@@ -9,10 +9,9 @@ import { redirect } from 'next/navigation';
 import { addCourse } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddCourseSchema } from '@/lib/validationSchemas';
-import { Semester } from '@prisma/client';
 
 const onSubmit = async (data: {
-  title: string; section: number; semester: Semester; year: number; instructor: string;
+  title: string; section: number; semester: string; year: number; instructor: string;
 }) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
   await addCourse(data);

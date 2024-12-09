@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, Button } from 'react-bootstrap';
 
 const PanicSessionAgreement: React.FC = () => (
   <div
@@ -14,17 +14,28 @@ const PanicSessionAgreement: React.FC = () => (
       flexDirection: 'column',
       // justifyContent: 'center',
       alignItems: 'center',
+      fontFamily: 'AmollaRaspersItalic',
       // height: '100vh',
       // textAlign: 'center', // Optional: Centers text inside the content
     }}
   >
-    <h1 style={{ textAlign: 'center', color: 'white', padding: '20px' }}>Panic Session Agreement</h1>
+    <h1
+      style={{
+        textAlign: 'center',
+        color: 'white',
+        padding: '15px',
+        marginTop: '10px',
+        fontFamily: 'AmollaRaspersItalic',
+      }}
+    >
+      PANIC SESSION AGREEMENT
+    </h1>
 
     <Row
       className="text-box2 p-4 rounded"
       style={{
         width: '100%', // Matches the width of the parent div
-        padding: '20px', // Adjusts internal spacing
+        // padding: '10px', // Adjusts internal spacing
       }}
     >
 
@@ -35,53 +46,67 @@ const PanicSessionAgreement: React.FC = () => (
       > */}
       <ol>
         <li style={{ fontSize: '18px' }}>
-          <strong>Meet in Public Places:</strong>
+          <strong>MEET IN PUBLIC PLACES:</strong>
           <ul>
             <li>
-              Always hold study sessions in safe, public locations such as libraries, coffee shops,
-              or deignated study areas. Avoid private residences or secluded areas.
+              ALWAYS HOLD STUDY SESSIONS IN SAFE, PUBLIC LOCATIONS SUCH AS LIBRARIES, COFFEE SHOPS,
+              OR DESIGNATED STUDY AREAS. AVOID PRIVATE RESIDENCES OR SECLUDED AREAS.
             </li>
           </ul>
         </li>
         <li style={{ fontSize: '18px' }}>
-          <strong>Respect Personal Privacy:</strong>
+          <strong>RESPECT PERSONAL PRIVACY:</strong>
           <ul>
             <li>
-              Do not ask for or share sensitive information, such as home addresses, phone numbers,
-              or financial details, with other group members.
+              DO NOT ASK FOR A SHARE SENSITIVE INFORMATION, SUCH AS HOME ADDRESSES, PHONE NUMBERS,
+              OR FINANCIAL DETAILS, WITH OTHER GROUP MEMBERS.
             </li>
           </ul>
         </li>
         <li style={{ fontSize: '18px' }}>
-          <strong>Be Respectful and Inclusive:</strong>
+          <strong>BE RESPSECTFUL AND INCLUSIVE:</strong>
           <ul>
             <li>
-              Treat all participants with respect, regardless of their background,
-              beliefs, or opinions. Harrasment, discrimination, or offensive behavior will not be tolerated.
+              TREAT ALL PARTICIPANTS WITH RESPECT, REGARDLESS OF THEIR BACKGROUND,
+              BELIEFS, OR OPINIONS. HARRASMENT, DISCRIMINATION, OR OFFENSIVE BEHAVIOR WILL NOT BE TOLERATED.
             </li>
           </ul>
         </li>
         <li style={{ fontSize: '18px' }}>
-          <strong>Report Suspicious Behavior:</strong>
+          <strong>REPORT SUSPICIOUS BEHAVIOR:</strong>
           <ul>
             <li>
-              Immediately report any inappropriate, threatening, or suspicious
-              behavior to the app administrators and your institution, if necessary.
+              IMMEDIATELY REPORT ANY INNAPROPRIATE, THREATENING, OR SUSPICIOUS
+              BEHAVIOR TO THE APP ADMINISTRATORS AND YOUR INSTITUTION, IF NECESSARY.
             </li>
           </ul>
         </li>
         <li style={{ fontSize: '18px' }}>
-          <strong>Do Not Exchange Account Credentials:</strong>
+          <strong>DO NOT EXCHANGE ACCOUNT CREDENTIALS:</strong>
           <ul>
             <li>
-              Never share login information for university portals,
-              course materials, or any other accounts with study group members.
+              NEVER SHARE LOGIN INFORMATION FOR UNIVERSITY PORTALS,
+              COURSE MATERIALS, OR ANY OTHER ACCOUNTS WITH STUDY GROUP MEMBERS.
             </li>
           </ul>
         </li>
       </ol>
       {/* </div> */}
     </Row>
+    {/* <div className="button-group mt-3">
+      <Button variant="primary" className="mx-2">
+        I AGREE
+      </Button>
+      <Button variant="success" className="mx-2">
+        Signup
+      </Button>
+    </div> */}
+    <Button variant="warning" className="mx-2" size="lg" style={{ marginTop: '10px' }}>
+      I AGREE
+    </Button>
+    <Button variant="link" style={{ color: 'white' }}>
+      CANCEL
+    </Button>
   </div>
 );
 

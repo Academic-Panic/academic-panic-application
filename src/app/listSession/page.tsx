@@ -23,7 +23,7 @@ const ListPage = async () => {
       <Container id="list" fluid className="p-4">
         <Row>
           <Col>
-            <h1 className="text-white text-center">Courses</h1>
+            <h1 className="text-white text-center">Sessions</h1>
             <Table striped bordered hover>
               <thead>
                 <tr>

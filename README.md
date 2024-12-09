@@ -182,8 +182,8 @@ These graphs represent the dependencies in our database.
 ## 10. Future Development
 
   - Description: Google Calendar for student session reminders.
-      -Technical Implementation: The Google Calendar API is a programmatic interface that allows authorized applications to interact with Google Calendar data. It can be used for: Event 
-       management, Calendar management, Integration, Automation, and Data access.
+        -Technical Implementation: The Google Calendar API is a programmatic interface that allows authorized applications to interact with Google Calendar data. It can be used for: Event 
+         management, Calendar management, Integration, Automation, and Data access.
   - You can access the Google Calendar API through: Explicit HTTP calls and The Google Client Libraries.
   - To enable an API in Google Calendar, you can
       - Go to the API Console
@@ -194,13 +194,13 @@ These graphs represent the dependencies in our database.
       - Dependencies: Libraries, frameworks, or APIs involved.
 
    - Description: Enforce Enrollment
-       -Techincal Implementation: Enforce students to verify their enrollment through transcripts or student ID.
+       - Techincal Implementation: Enforce students to verify their enrollment through transcripts or student ID.
 
    - Description: Suspicious Behavior Reporting Page
-       -Technical Implementation: Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is     
-        reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have   
-        harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file. All students are encouraged to report suspicious behavior to campus 
-        police, in relation to Academic Panic users engaging in suspicious or malicious behaviors.
+       - Technical Implementation: Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is    
+         reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have   
+         harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file. All students are encouraged to report suspicious behavior to campus 
+         police, in relation to Academic Panic users engaging in suspicious or malicious behaviors.
   
 
 ###  limitations or areas requiring optimization:

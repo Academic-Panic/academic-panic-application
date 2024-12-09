@@ -75,10 +75,10 @@ These graphs represent the dependencies in our database.
 ![Dependency Graph](./public/srcApp.svg)
 
 ### Components
-![Dependency Graph](./public/srcAppComponents.svg)
+![Dependency Graph](./public/srcComponents.svg)
 
 ### Utilities
-![Dependency Graph](./public/srcAppLib.svg)
+![Dependency Graph](./public/srcLib.svg)
 
 ### API
 ![Dependency Graph](./public/srcAppApi.svg)

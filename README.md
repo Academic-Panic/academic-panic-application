@@ -47,8 +47,8 @@ This web application is intended for college students in STEM at the University 
 - **Technical Implementation:** Using the `User` data structure in the Prisma Schema. A `username` field was added to allow users to create unique identifiers viewable by other users.
 
 ### Add Course
-- **Technical Implementation:** Propagates course modifications to other app pages like "Add Stuff" and "Edit Stuff." 
-- **Future Feature:** Enforce students to verify their enrollment through transcripts or student ID.
+- **Technical Implementation:** Propagates course modifications to other app pages like "Add Stuff" and "Edit Stuff."
+-  - **Future Feature:** Enforce students to verify their enrollment through transcripts or student ID.
 
 ### Create Session
 - **Technical Implementation:** Allows users to modify the session model [a structure that is based on the model course structure] in the Prisma Schema.
@@ -57,7 +57,9 @@ This web application is intended for college students in STEM at the University 
 - **Technical Implementation:** Prompts users to agree to safety guidelines upon creating or joining a session, regardless of friendship status. Encourages vigilance against malicious users.
 
 ### Reporting Page
-- **Technical Implementation: Future Feature** Allows users to report suspicious activity. Reported users may be suspended for investigation. Includes proactive monitoring for users with suspicious activity.
+- **Technical Implementation: Allows users to report suspicious activity. Reported users may be suspended for investigation. Includes proactive monitoring for users with suspicious activity.
+- Future Feature** Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report.
+- Students who report users will have the oppertunity to opt for the report to be sent to the campus police to keep on file.
 
 ### View Sessions
 - **Technical Implementation:** Renders a single row in the Session table. See listSession/page.tsx. Allows users to view publicly tagged sessions. 
@@ -189,6 +191,16 @@ These graphs represent the dependencies in our database.
       - Click the API you want to enable
       - Click ENABLE
       - Dependencies: Libraries, frameworks, or APIs involved.
+
+   - Description: Enforce Enrollment
+   -Techincal Implementation: Enforce students to verify their enrollment through transcripts or student ID.
+
+   - Description: Suspicious Behavior Reporting Page
+   - Technical Implementation: Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is     
+     reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have   
+     harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file.
+   - All students are encouraged to report suspicious behavior to campus police, in relation to Academic Panic users engaging in suspicious or malicious behaviors.
+  
 
 ###  limitations or areas requiring optimization:
   ### **Security**

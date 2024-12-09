@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 export async function addCourse(course: {
-  title: string; section: number; semester: Semester; year: number; instructor: string; location: Location
+  title: string; section: number; semester: Semester; year: number; instructor: string;
 }) {
   await prisma.course.create({
     data: {

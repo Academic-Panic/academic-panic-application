@@ -63,14 +63,13 @@ model Course {
 
 // @brief Information needed to yield a course that users have taken
 model Session {
-  id        Int    @id @default(autoincrement())
-  // course    Course @relation(fields: [courseID], references: [id])
-  courseID  Int
-  location  String
-  date      String
-  desc      String
-  partySize Int
-  attendees User[]
+  id          Int    @id @default(autoincrement())
+  courseTitle String
+  location    String
+  date        String
+  desc        String
+  partySize   Int
+  attendees   User[]
 }
 
 // enum Location {

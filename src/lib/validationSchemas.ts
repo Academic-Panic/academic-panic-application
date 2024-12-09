@@ -34,7 +34,7 @@ export const EditCourseSchema = Yup.object({
 });
 
 export const AddSessionSchema = Yup.object({
-  courseID: Yup.number().positive().required(), // Temporary measure to quickly allow for course input
+  courseTitle: Yup.string().required(), // Temporary measure to quickly allow for course input
   location: Yup.string().oneOf(['ICSpace', 'POST 2nd Floor', 'Computer Lab', 'Hamilton Library']).required(),
   date: Yup.string().required(),
   desc: Yup.string().required(),
@@ -43,7 +43,7 @@ export const AddSessionSchema = Yup.object({
 
 export const EditSessionSchema = Yup.object({
   id: Yup.number().required(),
-  courseID: Yup.number().positive().required(), // Temporary measure to quickly allow for course input
+  courseTitle: Yup.string().required(), // Temporary measure to quickly allow for course input
   location: Yup.string().oneOf(['ICSpace', 'POST2ndFloor', 'ComputerLab', 'HamiltonLibrary']).required(),
   date: Yup.string().required(),
   desc: Yup.string().required(),

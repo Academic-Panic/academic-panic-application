@@ -47,11 +47,11 @@ export async function deleteCourse(id: number) {
 
 // TODO: Change date type to DateTime when possible
 export async function addSession(session: {
-  courseID: number; location: string, date: string; desc: string; partySize: number
+  courseTitle: string; location: string, date: string; desc: string; partySize: number
 }) {
   await prisma.session.create({
     data: {
-      courseID: session.courseID,
+      courseTitle: session.courseTitle,
       location: session.location,
       date: session.date,
       desc: session.desc,
@@ -66,7 +66,7 @@ export async function editSession(session: Session) {
   await prisma.session.update({
     where: { id: session.id },
     data: {
-      courseID: session.courseID,
+      courseTitle: session.courseTitle,
       location: session.location,
       date: session.date,
       desc: session.desc,

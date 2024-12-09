@@ -191,7 +191,7 @@ These graphs represent the dependencies in our database.
       - Dependencies: Libraries, frameworks, or APIs involved.
 
 ###  limitations or areas requiring optimization:
-  #### **4. Security**
+  ### **4. Security**
   - **Limitations**:
     - Vulnerabilities to SQL Injection, XSS, CSRF, or data breaches.
     - Improper user authentication or session management.

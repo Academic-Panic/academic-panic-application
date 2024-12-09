@@ -15,6 +15,7 @@
 This web application is intended for college students in STEM at the University of Hawaii at Manoa, including TAs. This web application is not intended for University staff to create accounts and use in class as a mandated tool. Professors caught using this web application as part of class in a mandatory way will be banned if reported.
 
 ---
+<br><br>
 
 ## 2. Technical Specifications
 
@@ -28,6 +29,7 @@ This web application is intended for college students in STEM at the University 
   - Google Calendar
 
 ---
+<br><br>
 
 ## 3. System Architecture
 
@@ -37,6 +39,7 @@ This web application is intended for college students in STEM at the University 
 *This image is temporary and will be recreated.*
 
 ---
+<br><br>
 
 ## 4. Feature Details
 
@@ -63,6 +66,7 @@ This web application is intended for college students in STEM at the University 
 - **Technical Implementation:** Displays current and past courses, current sessions, and related public sessions on a private dashboard visible only to friends.
 
 ---
+<br><br>
 
 ## 5. Database Schema
 
@@ -86,8 +90,8 @@ These graphs represent the dependencies in our database.
 ### Application Layout
 ![Dependency Graph](./public/srcAppLayout.svg)
 
-
 ---
+<br><br>
 
 ## 6. Development Workflow
 
@@ -141,6 +145,9 @@ These graphs represent the dependencies in our database.
    success = load (file_name, &if_.eip, &if_.esp);          // Load the executable
    ```
 - Keep it Nelson [ Professor Mark Nelson Documentation Style ]
+
+---
+<br><br>
     
 ## 7. Setup Instructions
 
@@ -150,17 +157,26 @@ These graphs represent the dependencies in our database.
 - Run the development server: npm run dev
 - Lint the code: npm run lint
 
+---
+<br><br>
+
 ## 8. Testing Guidelines
   
   - testing frameworks and tools: Playwright, ESlint
   - Instructions for running tests: State by state tests are required due to the     
     limitations of playwright.
 
+---
+<br><br>
+
 ## 9. Deployment Guide:
 
   - Steps to deploy the application to production: Milestone 1, Milestone 2, Milestone     3.
   - Tools for continuous integration and deployment (CI/CD): Github
- 
+
+---
+<br><br>
+
 ## 10. Future Development
 
   - Description: Google Calendar for student session reminders.
@@ -173,10 +189,24 @@ These graphs represent the dependencies in our database.
       - Click the API you want to enable
       - Click ENABLE
       - Dependencies: Libraries, frameworks, or APIs involved.
-        
+
 ###  limitations or areas requiring optimization:
-  - @TODO
-    
+  #### **4. Security**
+  - **Limitations**:
+    - Vulnerabilities to SQL Injection, XSS, CSRF, or data breaches.
+    - Improper user authentication or session management.
+
+  - **Optimization**:
+    - Use prepared statements and parameterized queries to prevent SQL injection.
+    - Sanitize and validate all user inputs.
+    - Implement HTTPS, secure cookies, and proper CORS policies.
+    - Use modern authentication practices (e.g., OAuth, JWT).
+
+
+
+---
+<br><br>
+
 ## 11. Collaboration Guidelines  
 
   ### Contribution guidelines for new developers: 

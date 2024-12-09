@@ -1,12 +1,12 @@
 'use server';
 
-import { Course, Semester, Session, Location } from '@prisma/client';
+import { Course, Session } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 export async function addCourse(course: {
-  title: string; section: number; semester: Semester; year: number; instructor: string;
+  title: string; section: number; semester: string; year: number; instructor: string;
 }) {
   await prisma.course.create({
     data: {
@@ -47,7 +47,7 @@ export async function deleteCourse(id: number) {
 
 // TODO: Change date type to DateTime when possible
 export async function addSession(session: {
-  courseID: number; location: Location, date: string; desc: string; partySize: number
+  courseID: number; location: string, date: string; desc: string; partySize: number
 }) {
   await prisma.session.create({
     data: {

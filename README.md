@@ -66,9 +66,26 @@ This web application is intended for college students in STEM at the University 
 
 ## 5. Database Schema
 
-Provide an Entity-Relationship Diagram (ERD) or detailed descriptions of tables and their relationships.
+These graphs represent the dependencies in our database.
 
-*This image is temporary and will be recreated.*
+### Schema Prisma
+![Dependency Graph](./public/schemaPrisma.svg)
+
+### Application
+![Dependency Graph](./public/srcApp.svg)
+
+### Components
+![Dependency Graph](./public/srcAppComponents.svg)
+
+### Utilities
+![Dependency Graph](./public/srcAppLib.svg)
+
+### API
+![Dependency Graph](./public/srcAppApi.svg)
+
+### Application Layout
+![Dependency Graph](./public/srcAppLayout.svg)
+
 
 ---
 

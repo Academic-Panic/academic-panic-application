@@ -198,8 +198,7 @@ These graphs represent the dependencies in our database.
 
    - Description: Suspicious Behavior Reporting Page
        - Technical Implementation:
-           - Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is    
-           - reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file. All students are encouraged to report suspicious behavior to campus 
+           - Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file. All students are encouraged to report suspicious behavior to campus 
            - police, in relation to Academic Panic users engaging in suspicious or malicious behaviors.
   
 

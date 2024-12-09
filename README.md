@@ -188,7 +188,7 @@ These graphs represent the dependencies in our database.
   - To enable an API in Google Calendar, you can
       - Go to the API Console
       - Select a project or create a new one
-      - Open the console left side menu and select APIs & services, and then select            Library
+      - Open the console left side menu and select APIs & services, and then select Library
       - Click the API you want to enable
       - Click ENABLE
       - Dependencies: Libraries, frameworks, or APIs involved.
@@ -199,6 +199,11 @@ These graphs represent the dependencies in our database.
    - Description: Suspicious Behavior Reporting Page
        - Technical Implementation:
            - Create an algorithm that detects suspicious behavior [based on certain parameters] and adds users who meet criteria to a suspicious user list. If this user is reported they will automatically be kicked from Academic Panic. Kicked suspicious users will have a month to contest the report. Students who report users [specifically users who have harrased them in IRL] will have the oppertunity to opt for the report to be sent to the campus police to keep on file. All students are encouraged to report suspicious behavior to campus police, in relation to Academic Panic users engaging in suspicious or malicious behaviors.
+        
+   - Description: Course Rating System
+       - Technical Implementation:
+           - Students will be able to rate courses annonymously. This includes a rating system that evaluates the course material, textbooks, homework, difficulty, professor, resource accesibility. The intention for the course rating system is place the power of transparency back in the students hands and hold the university and professors accountable while also preparing future students.
+           - Academic Panic will be using algorithms that do not allow for foul language. Students will be encouraged to remain professional for the sake of credibility and seriousness.
   
 
 ###  limitations or areas requiring optimization:

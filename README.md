@@ -48,16 +48,16 @@ This web application is intended for college students in STEM at the University 
 - **Future Feature:** Enforce students to verify their enrollment through transcripts or student ID.
 
 ### Create Session
-- **Technical Implementation:** Allows users to modify the session model in the Prisma Schema.
+- **Technical Implementation:** Allows users to modify the session model [a structure that is based on the model course structure] in the Prisma Schema.
 
 ### User Agreement
 - **Technical Implementation:** Prompts users to agree to safety guidelines upon creating or joining a session, regardless of friendship status. Encourages vigilance against malicious users.
 
 ### Reporting Page
-- **Technical Implementation:** Allows users to report suspicious activity. Reported users may be suspended for investigation. Includes proactive monitoring for users with suspicious activity.
+- **Technical Implementation: Future Feature** Allows users to report suspicious activity. Reported users may be suspended for investigation. Includes proactive monitoring for users with suspicious activity.
 
 ### View Sessions
-- **Technical Implementation:** Allows users to view publicly tagged sessions.
+- **Technical Implementation:** Renders a single row in the Session table. See listSession/page.tsx. Allows users to view publicly tagged sessions. 
 
 ### Student Panic Boards
 - **Technical Implementation:** Displays current and past courses, current sessions, and related public sessions on a private dashboard visible only to friends.
@@ -133,18 +133,18 @@ Provide an Entity-Relationship Diagram (ERD) or detailed descriptions of tables 
 - Run the development server: npm run dev
 - Lint the code: npm run lint
 
-  ## 8. Testing Guidelines
+## 8. Testing Guidelines
   
   - testing frameworks and tools: Playwright, ESlint
   - Instructions for running tests: State by state tests are required due to the     
     limitations of playwright.
 
-  ## 9. Deployment Guide:
+## 9. Deployment Guide:
 
   - Steps to deploy the application to production: Milestone 1, Milestone 2, Milestone     3.
   - Tools for continuous integration and deployment (CI/CD): Github
  
-  ## 10. Future Development
+## 10. Future Development
 
   - Description: Google Calendar for student session reminders.
   - Technical Implementation: The Google Calendar API is a programmatic interface that     allows authorized applications to interact with Google Calendar data. It can be        used for: Event management, Calendar management, Integration, Automation, and          Data access.
@@ -157,10 +157,10 @@ Provide an Entity-Relationship Diagram (ERD) or detailed descriptions of tables 
       - Click ENABLE
       - Dependencies: Libraries, frameworks, or APIs involved.
         
-  ###  limitations or areas requiring optimization:
+###  limitations or areas requiring optimization:
   - @TODO
     
-  ## 11. Collaboration Guidelines  
+## 11. Collaboration Guidelines  
 
   ### Contribution guidelines for new developers: 
   - Academic Panic will be made available for Universities to use for their student        body.

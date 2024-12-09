@@ -214,9 +214,7 @@ These graphs represent the dependencies in our database.
   - Universities will be expected to follow the original intention for Academic Panic:
       - Academic Panic was created for students by students.
       - Academic Panic does not support professors intending to use the app as part of         their curriculum or in any way that contradicts our mission statemnent.
-
-
-For details, please see http://ics-software-engineering.github.io/nextjs-application-template/.
-
+---
+<br><br>
 
 For details, please see http://ics-software-engineering.github.io/nextjs-application-template/.

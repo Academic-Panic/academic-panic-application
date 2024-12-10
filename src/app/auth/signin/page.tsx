@@ -33,7 +33,7 @@ const SignIn = () => {
           <Col xs={5}>
             <Card>
               <Card.Body>
-                <h1 style={padBelow}>Panicker Login</h1>
+                <h1 style={padBelow}>PANICKER LOGIN</h1>
                 <Form method="post" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
                     <input

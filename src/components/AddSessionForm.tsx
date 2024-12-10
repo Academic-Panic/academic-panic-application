@@ -17,7 +17,7 @@ interface Course {
   title: string;
 }
 
-const onSubmit = async (session: { courseID: number; location: string; date: string; desc: string; partySize: number }) => {
+const onSubmit = async (session: { courseTitle: string; location: string; date: string; desc: string; partySize: number }) => {
   await addSession(session);
   swal('Success', 'Your course has been added', 'success', {
     timer: 2000,
@@ -76,18 +76,12 @@ const AddSessionForm: React.FC = () => {
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Course</Form.Label>
-                  <select
-                    {...register('courseID')}
-                    className={`form-control ${errors.courseID ? 'is-invalid' : ''}`}
-                  >
-                    <option value="">Select a course</option>
-                    {courses.map((course) => (
-                      <option key={course.id} value={course.id}>
-                        {course.title}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="invalid-feedback">{errors.courseID?.message}</div>
+                  <input
+                    type="string"
+                    {...register('courseTitle')}
+                    className={`form-control ${errors.date ? 'is-invalid' : ''}`}
+                  />
+                  <div className="invalid-feedback">{errors.courseTitle?.message}</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Location</Form.Label>

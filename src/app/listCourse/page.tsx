@@ -20,18 +20,18 @@ const ListPage = async () => {
   // console.log(stuff);
   return (
     <main>
-      <Container id="list" fluid className="p-4">
+      <Container id="list" fluid className="p-4" style={{ fontFamily: 'AmollaRaspersItalic' }}>
         <Row>
           <Col>
-            <h1 className="text-white text-center">Courses</h1>
+            <h1 className="text-white text-center">COURSES</h1>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Section</th>
-                  <th>Semester</th>
-                  <th>Year</th>
-                  <th>Instructor</th>
+                  <th>TITLE</th>
+                  <th>SECTION</th>
+                  <th>SEMESTER</th>
+                  <th>YEAR</th>
+                  <th>INSTRUCTOR</th>
                 </tr>
               </thead>
               <tbody>

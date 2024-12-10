@@ -37,8 +37,8 @@ const ListPage = async () => {
               <h2 className="text-center">Panic Sessions</h2>
               <Row xs={1} md={2} lg={3} className="g-4">
                 {panicSession.map((session) => (
-                  <Col key={session.courseID + session.location}>
-                    <SessionCard session={session} courses={courses.filter(course => (course.id === session.courseID))} />
+                  <Col key={session.courseTitle + session.location}>
+                    <SessionCard session={session} courses={courses.filter(course => (course.id === session.courseTitle))} />
                   </Col>
                 ))}
               </Row>

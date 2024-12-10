@@ -28,12 +28,12 @@ const SignIn = () => {
 
   return (
     <main>
-      <Container style={{ opacity: 0.75, paddingTop: '6%' }}>
+      <Container style={{ opacity: 0.75, paddingTop: '6%', fontFamily: 'AmollaRaspersItalic' }}>
         <Row className="justify-content-center">
           <Col xs={5}>
             <Card>
               <Card.Body>
-                <h1 style={padBelow}>Panicker Login</h1>
+                <h1 style={padBelow}>PANICKER LOGIN</h1>
                 <Form method="post" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
                     <input

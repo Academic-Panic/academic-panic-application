@@ -28,7 +28,7 @@ const SignIn = () => {
 
   return (
     <main>
-      <Container style={{ opacity: 0.75, paddingTop: '6%' }}>
+      <Container style={{ opacity: 0.75, paddingTop: '6%', fontFamily: 'AmollaRaspersItalic' }}>
         <Row className="justify-content-center">
           <Col xs={5}>
             <Card>

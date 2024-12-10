@@ -14,20 +14,31 @@ const NavBar: React.FC = () => {
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" style={{ fontFamily: 'AmollaRaspersItalic' }}>
       <Container>
-        <Navbar.Brand href="/">Academic Panic</Navbar.Brand>
+        <Navbar.Brand href="/">ACADEMIC PANIC</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser
               ? [
                   <Nav.Link id="add-stuff-nav" href="/addCourse" key="addCourse" active={pathName === '/addCourse'}>
-                    Create Course
+                    CREATE COURSE
                   </Nav.Link>,
                   <Nav.Link id="list-stuff-nav" href="/listCourse" key="listCourse" active={pathName === '/listCourse'}>
-                    List Courses
+                    LIST COURSES
                   </Nav.Link>,
+                  <Nav.Link id="add-stuff-nav" href="/addSession" key="addSession" active={pathName === '/addSession'}>
+                    CREATE SESSION
+                  </Nav.Link>,
+                <Nav.Link
+                  id="list-stuff-nav"
+                  href="/listSession"
+                  key="listSession"
+                  active={pathName === '/listSession'}
+                >
+                    LIST SESSION
+                </Nav.Link>,
                 ]
               : ''}
             {currentUser && role === 'ADMIN' ? (

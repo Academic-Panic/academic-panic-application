@@ -22,23 +22,49 @@ const NavBar: React.FC = () => {
           <Nav className="me-auto justify-content-start">
             {currentUser
               ? [
-                  <Nav.Link id="add-stuff-nav" href="/addCourse" key="addCourse" active={pathName === '/addCourse'}>
-                    CREATE COURSE
-                  </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/listCourse" key="listCourse" active={pathName === '/listCourse'}>
-                    LIST COURSES
-                  </Nav.Link>,
-                  <Nav.Link id="add-stuff-nav" href="/addSession" key="addSession" active={pathName === '/addSession'}>
-                    CREATE SESSION
-                  </Nav.Link>,
-                <Nav.Link
-                  id="list-stuff-nav"
-                  href="/listSession"
-                  key="listSession"
-                  active={pathName === '/listSession'}
-                >
-                    LIST SESSION
-                </Nav.Link>,
+                <div className="d-flex">
+                  <NavDropdown title="COURSES" id="nav-dropdown">
+                    <NavDropdown.Item
+                      as={Nav.Link}
+                      id="add-stuff-nav"
+                      href="/addCourse"
+                      key="addCourse"
+                      active={pathName === '/addCourse'}
+                    >
+                      CREATE COURSE
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Nav.Link}
+                      id="add-stuff-nav"
+                      href="/listCourse"
+                      key="listCourse"
+                      active={pathName === '/listCourse'}
+                    >
+                      LIST COURSES
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                  <NavDropdown title="SESSIONS" id="nav-dropdown">
+                    <NavDropdown.Item
+                      as={Nav.Link}
+                      id="add-stuff-nav"
+                      href="/addSession"
+                      key="addSession"
+                      active={pathName === '/addSession'}
+                    >
+                      CREATE SESSION
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      as={Nav.Link}
+                      id="add-stuff-nav"
+                      href="/listSession"
+                      key="listSession"
+                      active={pathName === '/listSession'}
+                    >
+                      LIST SESSIONS
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </div>,
+
                 ]
               : ''}
             {currentUser && role === 'ADMIN' ? (

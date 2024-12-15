@@ -37,17 +37,17 @@ const AddCourseForm: React.FC = () => {
   }
 
   return (
-    <Container className="py-3">
+    <Container className="py-3" style={{ fontFamily: 'AmollaRaspersItalic' }}>
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
-            <h2 className="text-white">Add Course</h2>
+            <h2 className="text-white">ADD COURSE</h2>
           </Col>
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
-                  <Form.Label>Title</Form.Label>
+                  <Form.Label>TITLE</Form.Label>
                   <input
                     type="text"
                     {...register('title')}
@@ -56,7 +56,7 @@ const AddCourseForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.title?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Section</Form.Label>
+                  <Form.Label>SECTION</Form.Label>
                   <input
                     type="number"
                     {...register('section')}
@@ -65,8 +65,12 @@ const AddCourseForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.section?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Semester</Form.Label>
-                  <select {...register('semester')} className={`form-control ${errors.semester ? 'is-invalid' : ''}`}>
+                  <Form.Label>SEMESTER</Form.Label>
+                  <select
+                    {...register('semester')}
+                    className={`form-control ${errors.semester ? 'is-invalid' : ''}`}
+                    style={{ color: 'gray' }}
+                  >
                     <option value="Spring">Spring</option>
                     <option value="Summer">Summer</option>
                     <option value="Fall">Fall</option>
@@ -74,7 +78,7 @@ const AddCourseForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.semester?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Year</Form.Label>
+                  <Form.Label>YEAR</Form.Label>
                   <input
                     type="number"
                     {...register('year')}
@@ -83,7 +87,7 @@ const AddCourseForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.year?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Instructor</Form.Label>
+                  <Form.Label>INSTRUCTOR</Form.Label>
                   <input
                     {...register('instructor')}
                     className={`form-control ${errors.instructor ? 'is-invalid' : ''}`}
@@ -94,12 +98,12 @@ const AddCourseForm: React.FC = () => {
                   <Row className="pt-3">
                     <Col>
                       <Button type="submit" variant="primary">
-                        Submit
+                        SUBMIT
                       </Button>
                     </Col>
                     <Col>
                       <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
-                        Reset
+                        RESET
                       </Button>
                     </Col>
                   </Row>

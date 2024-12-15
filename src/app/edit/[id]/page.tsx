@@ -29,7 +29,7 @@ export default async function EditCoursePage({ params }: { params: { id: string 
 
   return (
     <main>
-      <EditCourseForm course={course} />
+      <EditCourseForm course={course} oldID={id} />
     </main>
   );
 }

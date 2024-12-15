@@ -15,8 +15,17 @@ const ListPage = async () => {
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  // const owner = (session && session.user && session.user.email) || '';
-  const courses = await prisma.course.findMany();
+  // Find courses in which the user is a member of
+  const courses = await prisma.course.findMany({
+    where: {
+      user: {
+        some: {
+          email: session!.user!.email as string // Beating typescript into submission
+          ,
+        },
+      },
+    },
+  });
   // console.log(stuff);
   return (
     <main>

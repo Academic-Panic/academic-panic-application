@@ -5,34 +5,54 @@ import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
+// @brief Function that adds a user to a course's relations; will write a course
+// in if it doesn't exist already
+//
+// @param course A typescript representation of the fields whose unique
+// combination compose a course
+//
+// @param email The email address of the user that will be added to the course
 export async function addCourse(course: {
-  title: string; section: number; semester: string; year: number; instructor: string;
-}) {
-  await prisma.course.create({
-    data: {
+  title: string; section: number; semester: string; year: number; instructor: string
+}, email: string) {
+  // First search for the desired course
+  const upsertCourse = await prisma.course.upsert({
+    where: {
+      title_section_semester_year_instructor: {
+        title: course.title,
+        section: course.section,
+        semester: course.semester,
+        year: course.year,
+        instructor: course.instructor,
+      },
+    },
+    update: {},
+    create: {
       title: course.title,
       section: course.section,
       semester: course.semester,
       year: course.year,
       instructor: course.instructor,
     },
+  });
+  // Perform mutual listing
+  await prisma.course.update({
+    where: { id: upsertCourse.id },
+    data: { user: { connect: { email } } },
   });
   // After adding, redirect to the list page
   redirect('/listCourse');
 }
 
-export async function editCourse(course: Course) {
+export async function editCourse(oldCourseID: number, course: Course, email: string) {
+  // Perform mutual delisting
   await prisma.course.update({
-    where: { id: course.id },
-    data: {
-      title: course.title,
-      section: course.section,
-      semester: course.semester,
-      year: course.year,
-      instructor: course.instructor,
+    where: {
+      id: oldCourseID,
     },
+    data: { user: { disconnect: { email } } },
   });
-  // After updating, redirect to the list page
+  addCourse(course, email);
   redirect('/listCourse');
 }
 
@@ -45,7 +65,6 @@ export async function deleteCourse(id: number) {
   redirect('/listCourse');
 }
 
-// TODO: Change date type to DateTime when possible
 export async function addSession(session: {
   courseTitle: string; location: string, date: string; desc: string; partySize: number
 }) {

@@ -10,21 +10,23 @@ import { addCourse } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddCourseSchema } from '@/lib/validationSchemas';
 
-const onSubmit = async (data: {
-  title: string; section: number; semester: string; year: number; instructor: string;
-}) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await addCourse(data);
-  swal('Success', 'Your item has been added', 'success', {
-    timer: 2000,
-  });
-};
-
 const AddCourseForm: React.FC = () => {
   const { data: session, status } = useSession();
-  console.log(session); // TODO: use session data properly to avoid ESLint errors
-  // console.log('AddStuffForm', status, session);
-  // const currentUser = session?.user?.email || '';
+  const onSubmit = async (data: {
+    title: string; section: number; semester: string; year: number; instructor: string
+  }) => {
+    // Automatically format title
+    const sepIndex = data.title.indexOf('-') !== -1 ? data.title.indexOf('-') : data.title.indexOf(' ');
+    const upperAlpha = data.title.slice(0, sepIndex).toUpperCase();
+    const nums = data.title.slice(sepIndex + 1);
+    // eslint-disable-next-line no-param-reassign
+    data.title = `${upperAlpha}-${nums}`;
+    //
+    await addCourse(data, session!.user!.email as string);
+    swal('Success', 'Your item has been added', 'success', {
+      timer: 2000,
+    });
+  };
   const {
     register,
     handleSubmit,

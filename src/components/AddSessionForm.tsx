@@ -31,10 +31,10 @@ const onSubmit = async (session: {
 /// @param {string} desc - The description of the course
 /// @param {number} partySize - The number of people in the course
 const AddSessionForm: React.FC = () => {
-  const { data: userSession, status } = useSession();
-  const currentUser = userSession?.user?.email || '';
-  /// Logging user to temporarily "use" `currentUser`, because we still need `status`
-  console.log(`${currentUser}`);
+  const { data: session, status } = useSession();
+  const currentUser = session?.user?.email || '';
+  console.log(currentUser);
+
   const {
     register,
     handleSubmit,
@@ -43,6 +43,20 @@ const AddSessionForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(AddSessionSchema),
   });
+
+  const [courses, setCourses] = useState<Course[]>([]);
+  console.log(courses);
+
+  useEffect(() => {
+    // Fetch courses
+    const fetchCourses = async () => {
+      const response = await fetch('/api/courses'); // Replace with your API endpoint
+      const data = await response.json();
+      setCourses(data);
+    };
+
+    fetchCourses();
+  }, []);
 
   if (status === 'loading') {
     return <LoadingSpinner />;

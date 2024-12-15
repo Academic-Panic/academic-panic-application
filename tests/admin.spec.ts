@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.use({
-  storageState: 'admin-auth.json'
+  storageState: 'adminAuth.json',
 });
 
 test('test', async ({ page }) => {
@@ -25,3 +25,4 @@ test('test', async ({ page }) => {
   await page.getByRole('heading', { name: 'List Users Admin' }).click();
   await page.getByRole('heading', { name: 'List Stuff Admin' }).click();
 });
+

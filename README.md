@@ -47,7 +47,7 @@ This web application is intended for college students in STEM at the University 
 - **Technical Implementation:** Using the `User` data structure in the Prisma Schema. A `username` field was added to allow users to create unique identifiers viewable by other users.
 
 ### Add Course
-- **Technical Implementation:** Propagates course modifications to other app pages like "Add Stuff" and "Edit Stuff."
+- **Technical Implementation:** Propagates course modifications to other app pages like `Add Stuff` and `Edit Stuff`.
 -  - **Future Feature:** Enforce students to verify their enrollment through transcripts or student ID.
 
 ### Create Session
@@ -62,7 +62,7 @@ This web application is intended for college students in STEM at the University 
 - Students who report users will have the oppertunity to opt for the report to be sent to the campus police to keep on file.
 
 ### View Sessions
-- **Technical Implementation:** Renders a single row in the Session table. See listSession/page.tsx. Allows users to view publicly tagged sessions. 
+- **Technical Implementation:** Renders a single row in the Session table. See `listSession/page.tsx`. Allows users to view publicly tagged sessions. 
 
 ### Student Panic Boards
 - **Technical Implementation:** Displays current and past courses, current sessions, and related public sessions on a private dashboard visible only to friends.

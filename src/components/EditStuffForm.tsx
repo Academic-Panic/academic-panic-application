@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,15 +9,25 @@ import { Course } from '@prisma/client';
 import { EditCourseSchema } from '@/lib/validationSchemas';
 import { editCourse } from '@/lib/dbActions';
 
-const onSubmit = async (data: Course) => {
-  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
-  await editCourse(data);
-  swal('Success', 'Your item has been updated', 'success', {
-    timer: 2000,
-  });
-};
+const EditCourseForm = ({ course, oldID }: { course: Course, oldID: number }) => {
+  const { data: webSession, status } = useSession();
+  console.log(status);
 
-const EditCourseForm = ({ course }: { course: Course }) => {
+  const onSubmit = async (data: Course) => {
+  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
+    // Automatically format title
+    const sepIndex = data.title.indexOf('-') !== -1 ? data.title.indexOf('-') : data.title.indexOf(' ');
+    const upperAlpha = data.title.slice(0, sepIndex).toUpperCase();
+    const nums = data.title.slice(sepIndex + 1);
+    // eslint-disable-next-line no-param-reassign
+    data.title = `${upperAlpha}-${nums}`;
+    //
+    await editCourse(oldID, data, webSession?.user?.email as string);
+    swal('Success', 'Your item has been updated', 'success', {
+      timer: 2000,
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -63,7 +74,7 @@ const EditCourseForm = ({ course }: { course: Course }) => {
                     type="number"
                     defaultValue={course.section}
                     {...register('section')}
-                    className={`form-control ${errors.section ? 'is-invalid' : ''}`}
+                    className={`form-control ${errors.section?.message ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.section?.message}</div>
                 </Form.Group>
@@ -71,7 +82,7 @@ const EditCourseForm = ({ course }: { course: Course }) => {
                   <Form.Label>Semester</Form.Label>
                   <select
                     {...register('semester')}
-                    className={`form-control ${errors.semester ? 'is-invalid' : ''}`}
+                    className={`form-control ${errors.semester?.message ? 'is-invalid' : ''}`}
                     defaultValue={course.semester}
                   >
                     <option value="Spring">Spring</option>
@@ -95,7 +106,7 @@ const EditCourseForm = ({ course }: { course: Course }) => {
                   <input
                     defaultValue={course.instructor}
                     {...register('instructor')}
-                    className={`form-control ${errors.instructor ? 'is-invalid' : ''}`}
+                    className={`form-control ${errors.instructor?.message ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.instructor?.message}</div>
                 </Form.Group>

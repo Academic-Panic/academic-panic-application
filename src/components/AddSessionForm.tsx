@@ -1,7 +1,6 @@
 'use client';
 
 /* eslint-disable max-len */
-import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -12,22 +11,30 @@ import { addSession } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddSessionSchema } from '@/lib/validationSchemas';
 
-interface Course {
-  id: number;
-  title: string;
-}
-
-const onSubmit = async (session: { courseTitle: string; location: string; date: string; desc: string; partySize: number }) => {
+const onSubmit = async (session: {
+  courseTitle: string;
+  location: string;
+  date: string;
+  desc: string;
+  partySize: number }) => {
   await addSession(session);
   swal('Success', 'Your course has been added', 'success', {
     timer: 2000,
   });
 };
 
+/// Add a session to the database
+/// The form takes in the course title, location, date, description, and party size
+/// @param {string} courseTitle - The title of the course
+/// @param {string} location - The location of the course
+/// @param {string} date - The date of the course
+/// @param {string} desc - The description of the course
+/// @param {number} partySize - The number of people in the course
 const AddSessionForm: React.FC = () => {
   const { data: session, status } = useSession();
   const currentUser = session?.user?.email || '';
   console.log(currentUser);
+
   const {
     register,
     handleSubmit,
@@ -81,15 +88,25 @@ const AddSessionForm: React.FC = () => {
                   <input
                     type="string"
                     {...register('courseTitle')}
-                    className={`form-control ${errors.date ? 'is-invalid' : ''}`}
+                    className={`form-control ${errors.courseTitle ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.courseTitle?.message}</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Location</Form.Label>
+                  {/*
                   <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
                     <option value="ICSpace">ICSpace</option>
+                    <option value="POST2ndFloor">POST 2nd Floor</option>
+                    <option value="HolmesComputerLab">Holmes Computer Lab</option>
+                    <option value="HamiltonLibrary">Hamilton Library</option>
                   </select>
+                  */}
+                  <input
+                    type="string"
+                    {...register('location')}
+                    className={`form-control ${errors.location ? 'is-invalid' : ''}`}
+                  />
                   <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
                 <Form.Group>

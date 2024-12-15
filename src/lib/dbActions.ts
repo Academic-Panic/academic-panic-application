@@ -44,18 +44,15 @@ export async function addCourse(course: {
   redirect('/listCourse');
 }
 
-export async function editCourse(course: Course) {
+export async function editCourse(oldCourseID: number, course: Course, email: string) {
+  // Perform mutual delisting
   await prisma.course.update({
-    where: { id: course.id },
-    data: {
-      title: course.title,
-      section: course.section,
-      semester: course.semester,
-      year: course.year,
-      instructor: course.instructor,
+    where: {
+      id: oldCourseID,
     },
+    data: { user: { disconnect: { email } } },
   });
-  // After updating, redirect to the list page
+  addCourse(course, email);
   redirect('/listCourse');
 }
 
@@ -68,7 +65,6 @@ export async function deleteCourse(id: number) {
   redirect('/listCourse');
 }
 
-// TODO: Change date type to DateTime when possible
 export async function addSession(session: {
   courseTitle: string; location: string, date: string; desc: string; partySize: number
 }) {

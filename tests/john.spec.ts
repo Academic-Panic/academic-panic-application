@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.use({
-  storageState: 'john-auth.json'
+  storageState: 'johnAuth.json',
 });
 
 test('test', async ({ page }) => {

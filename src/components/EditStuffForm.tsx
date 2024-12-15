@@ -11,6 +11,7 @@ import { editCourse } from '@/lib/dbActions';
 
 const EditCourseForm = ({ course, oldID }: { course: Course, oldID: number }) => {
   const { data: webSession, status } = useSession();
+  console.log(status);
 
   const onSubmit = async (data: Course) => {
   // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);

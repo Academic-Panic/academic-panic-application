@@ -27,6 +27,7 @@ const onSubmit = async (session: { courseTitle: string; location: string; date: 
 const AddSessionForm: React.FC = () => {
   const { data: session, status } = useSession();
   const currentUser = session?.user?.email || '';
+  console.log(currentUser);
   const {
     register,
     handleSubmit,
@@ -37,6 +38,7 @@ const AddSessionForm: React.FC = () => {
   });
 
   const [courses, setCourses] = useState<Course[]>([]);
+  console.log(courses);
 
   useEffect(() => {
     // Fetch courses

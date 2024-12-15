@@ -1,6 +1,7 @@
 'use client';
 
 /* eslint-disable max-len */
+import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -10,6 +11,7 @@ import { redirect } from 'next/navigation';
 import { addSession } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddSessionSchema } from '@/lib/validationSchemas';
+import { Course } from '@prisma/client';
 
 const onSubmit = async (session: {
   courseTitle: string;

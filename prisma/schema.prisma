@@ -23,17 +23,13 @@ datasource db {
 // and may thus be attached to all models (not just users, which have a
 // practical application for IDs).
 model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique
-  email     String    @unique
-  password  String
-  role      Role      @default(USER)
-  courses   Course[]
-  sesssions Session[]
-
-  // friendsRequested Int[] // "Friendships" will be computed when requested
-  // TODO: Write an isFriends() function to determine to help document the
-  // rationale behind having requested friends stored instead of current friends
+  id       Int       @id @default(autoincrement())
+  username String    @unique
+  email    String    @unique
+  password String
+  role     Role      @default(USER)
+  courses  Course[]
+  sessions Session[]
 }
 
 enum Role {
@@ -50,49 +46,20 @@ model Course {
   year       Int
   instructor String
   user       User[]
-  // Session    Session[]
 
   @@unique([title, section, semester, year, instructor])
 }
-
-// enum Semester {
-//   Spring
-//   Summer
-//   Fall
-// }
 
 // @brief Information needed to yield a course that users have taken
 model Session {
   id          Int    @id @default(autoincrement())
   courseTitle String
   location    String
+  owner       String
   date        String
   desc        String
   partySize   Int
   attendees   User[]
+
+  @@unique([owner, date])
 }
-
-// enum Location {
-//   ICSpace
-//   POST2ndFloor
-//   ComputerLab
-//   HamiltonLibrary
-// }
-
-// // Will assume that the model for `Stuff` will be the baseline for "courses."
-// // TODO: Eventually create something in the style of `Stuff` to hold a global
-// // list of sessions planned.
-// model Stuff {
-//   id        Int       @id @default(autoincrement())
-//   name      String
-//   quantity  Int
-//   condition Condition
-//   owner     String
-// }
-
-// enum Condition {
-//   excellent
-//   good
-//   fair
-//   poor
-// }

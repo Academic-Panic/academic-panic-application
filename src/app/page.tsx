@@ -25,7 +25,7 @@ const LandingPage = () => (
               LOGIN
             </Button>
             <Button variant="success" className="mx-2" href="/auth/signup">
-              SIGNUP
+              SIGN UP
             </Button>
           </div>
         </Col>

@@ -1,27 +1,33 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row, Container } from 'react-bootstrap';
 
 /** After the user clicks the "SignOut" link in the NavBar, log them out and display this page. */
 const SignOut = () => (
-  <Col id="signout-page" className="text-center py-3">
-    <h2>Do you want to sign out?</h2>
-    <Row>
-      <Col xs={4} />
-      <Col>
-        <Button variant="danger" onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
-          Sign Out
-        </Button>
+  <Container
+    id="signout-page"
+    fluid
+    className="d-flex justify-content-center align-items-center text-center vh-100"
+    style={{
+      fontFamily: 'AmollaRaspersItalic',
+    }}
+  >
+    <Row className="text-box p-4 rounded">
+      <Col className="d-flex flex-column justify-content-center align-items-center text-black">
+        <h2>DO YOU WANT TO SIGN OUT?</h2>
+        <p>IF SO WE&apos;LL SEE YOU AGAIN A WEEK BEFORE YOUR NEXT EXAM!!</p>
+        <div className="button-group mt-3">
+          <Button variant="danger" className="mx-2" onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
+            SIGN OUT
+          </Button>
+          <Button variant="secondary" className="mx-2" href="/">
+            CANCEL
+          </Button>
+        </div>
       </Col>
-      <Col>
-        <Button variant="secondary" href="/">
-          Cancel
-        </Button>
-      </Col>
-      <Col xs={4} />
     </Row>
-  </Col>
+  </Container>
 );
 
 export default SignOut;

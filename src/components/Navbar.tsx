@@ -23,6 +23,14 @@ const NavBar: React.FC = () => {
             {currentUser
               ? [
                 <div className="d-flex">
+                  <Nav.Link
+                    id="panic-board-nav"
+                    href="/PanicBoard"
+                    key="panicBoard"
+                    active={pathName === '/PanicBoard'}
+                  >
+                    PANIC BOARD
+                  </Nav.Link>
                   <NavDropdown title="COURSES" id="nav-dropdown">
                     <NavDropdown.Item
                       as={Nav.Link}

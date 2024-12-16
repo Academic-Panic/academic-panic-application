@@ -4,7 +4,6 @@ import { prisma } from '@/lib/prisma';
 import ViewSession from '@/components/ViewSessions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
-import { warn } from 'console';
 
 /** Render a list of stuff for the logged in user. */
 const ListSession = async () => {

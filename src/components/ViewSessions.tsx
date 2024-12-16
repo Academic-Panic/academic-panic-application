@@ -2,7 +2,7 @@ import { Session } from '@prisma/client';
 import Link from 'next/link';
 
 /* Renders a single row in the Session table. See listSession/page.tsx. */
-const ViewSession = ({ id, courseTitle, location, date, desc, partySize, attendees }: Session) => (
+const ViewSession = ({ id, courseTitle, location, date, desc, partySize }: Session) => (
   <tr>
     <td>
       <Link href={`/edit/${id}`}>{courseTitle}</Link>
@@ -11,7 +11,6 @@ const ViewSession = ({ id, courseTitle, location, date, desc, partySize, attende
     <td>{date}</td>
     <td>{desc}</td>
     <td>{partySize}</td>
-    <td>{attendees.length}</td>
   </tr>
 );
 

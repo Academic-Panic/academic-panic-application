@@ -101,9 +101,9 @@ const HomePage = () => (
             <tbody />
           </Table>
         </Col>
-        <Col className="text-center pt-3" style={{ color: 'white' }}>
+        {/* <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>PUBLIC PANIC SESSION</h2>
-        </Col>
+        </Col> */}
       </Row>
     </Container>
   </main>

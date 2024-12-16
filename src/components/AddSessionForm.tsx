@@ -57,17 +57,17 @@ const AddSessionForm: React.FC = () => {
   }
 
   return (
-    <Container className="py-3">
+    <Container className="py-3" style={{ fontFamily: 'AmollaRaspersItalic' }}>
       <Row className="justify-content-center">
         <Col xs={5}>
           <Card style={{ opacity: 0.75, paddingTop: '6%' }}>
             <Col className="text-center">
-              <h2>Create Session</h2>
+              <h2>CREATE SESSION</h2>
             </Col>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
-                  <Form.Label>Date</Form.Label>
+                  <Form.Label>DATE</Form.Label>
                   <input
                     type="datetime-local"
                     {...register('date')}
@@ -75,7 +75,7 @@ const AddSessionForm: React.FC = () => {
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Course</Form.Label>
+                  <Form.Label>COURSE</Form.Label>
                   <input
                     type="string"
                     {...register('courseTitle')}
@@ -84,14 +84,14 @@ const AddSessionForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.courseTitle?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Location</Form.Label>
+                  <Form.Label>LOCATION</Form.Label>
                   <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
                     <option value="ICSpace">ICSpace</option>
                   </select>
                   <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Max Party Size</Form.Label>
+                  <Form.Label>MAX PARTY SIZE</Form.Label>
                   <input
                     type="number"
                     {...register('partySize')}
@@ -100,7 +100,7 @@ const AddSessionForm: React.FC = () => {
                   <div className="invalid-feedback">{errors.partySize?.message}</div>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Description</Form.Label>
+                  <Form.Label>DESCRIPTION</Form.Label>
                   <input
                     type="text"
                     {...register('desc')}
@@ -112,12 +112,12 @@ const AddSessionForm: React.FC = () => {
                   <Row className="pt-3">
                     <Col>
                       <Button type="submit" variant="primary">
-                        Submit
+                        SUBMIT
                       </Button>
                     </Col>
                     <Col>
                       <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
-                        Reset
+                        RESET
                       </Button>
                     </Col>
                   </Row>

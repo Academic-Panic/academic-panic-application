@@ -1,7 +1,12 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row, Button, Table } from 'react-bootstrap';
+// import StuffItem from '@/components/StuffItem';
+// import { prisma } from '@/lib/prisma';
+// import { loggedInProtectedPage } from '@/lib/page-protection';
+// import authOptions from '@/lib/authOptions';
+// import { getServerSession } from 'next-auth';
 import './globals.css';
 
 /** The Home page. */
@@ -34,6 +39,7 @@ const LandingPage = () => (
   </main>
 );
 
+/// SAVE HERE ///
 const HomePage = () => (
   <main className="panic-board">
     <Container
@@ -49,9 +55,11 @@ const HomePage = () => (
       <Row style={{ height: '55%' }}>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>TRAUMA IN PROGRESS</h2>
+          {/* INSERT TABLE HERE */}
         </Col>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
-          <h2>TRAUMA BONDS</h2>
+          <h2>TRAUMA SESSIONS</h2>
+          {/* CHANGE FROM TRAUMA BONDS */}
         </Col>
       </Row>
       <Row>
@@ -72,6 +80,7 @@ const HomePage = () => (
     </Container>
   </main>
 );
+/// HERE UNPAUSE ///
 
 /** The Home page component that renders conditionally. */
 const Home = () => {

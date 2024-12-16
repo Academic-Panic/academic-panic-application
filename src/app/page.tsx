@@ -55,28 +55,56 @@ const HomePage = () => (
       <Row style={{ height: '55%' }}>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>TRAUMA IN PROGRESS</h2>
-          {/* INSERT TABLE HERE */}
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>TITLE</th>
+                <th>SECTION</th>
+                <th>SEMESTER</th>
+                <th>YEAR</th>
+                <th>INSTRUCTOR</th>
+              </tr>
+            </thead>
+            <tbody />
+          </Table>
         </Col>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>TRAUMA SESSIONS</h2>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>TITLE</th>
+                <th>SECTION</th>
+                <th>SEMESTER</th>
+                <th>YEAR</th>
+                <th>INSTRUCTOR</th>
+              </tr>
+            </thead>
+            <tbody />
+          </Table>
           {/* CHANGE FROM TRAUMA BONDS */}
         </Col>
       </Row>
       <Row>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>REPRESSED MEMORIES</h2>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>TITLE</th>
+                <th>SECTION</th>
+                <th>SEMESTER</th>
+                <th>YEAR</th>
+                <th>INSTRUCTOR</th>
+              </tr>
+            </thead>
+            <tbody />
+          </Table>
         </Col>
         <Col className="text-center pt-3" style={{ color: 'white' }}>
           <h2>PUBLIC PANIC SESSION</h2>
         </Col>
       </Row>
-      {/* <Row className="text-box p-4 rounded">
-        <Col className="d-flex flex-column justify-content-center align-items-center text-black">
-          <h1>PANICK BOARD</h1>
-          <p>WELCOME PANICKER</p>
-          <p>READY TO GET YOUR STUDY ON?</p>
-        </Col>
-      </Row> */}
     </Container>
   </main>
 );

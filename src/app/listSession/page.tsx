@@ -25,11 +25,7 @@ const ListSession = async () => {
       },
     },
   });
-  const publicSessions = await prisma.session.findMany({
-    where: {
-      attendees,
-    },
-  });
+  const publicSessions = await prisma.session.findMany();
   // console.log(stuff);
   return (
     <main>

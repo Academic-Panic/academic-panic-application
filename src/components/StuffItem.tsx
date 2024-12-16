@@ -5,7 +5,7 @@ import Link from 'next/link';
 const StuffItem = ({ id, title, section, semester, year, instructor }: Course) => (
   <tr>
     <td>
-      <Link href={`/edit/${id}`}>{title}</Link>
+      <Link href={`/editCourse/${id}`}>{title}</Link>
     </td>
     <td>{section}</td>
     <td>{semester}</td>

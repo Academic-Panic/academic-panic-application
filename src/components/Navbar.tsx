@@ -47,9 +47,9 @@ const NavBar: React.FC = () => {
                     <NavDropdown.Item
                       as={Nav.Link}
                       id="add-stuff-nav"
-                      href="/addSession"
+                      href="/Agreement"
                       key="addSession"
-                      active={pathName === '/addSession'}
+                      active={pathName === '/Agreement'}
                     >
                       CREATE SESSION
                     </NavDropdown.Item>

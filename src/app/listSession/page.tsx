@@ -20,8 +20,7 @@ const ListSession = async () => {
     where: {
       attendees: {
         some: {
-          email: session!.user!.email as string // Beating typescript into submission
-          ,
+          email: session!.user!.email as string, // Beating typescript into submission
         },
       },
     },

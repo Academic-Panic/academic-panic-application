@@ -1,7 +1,6 @@
 'use client';
 
 /* eslint-disable max-len */
-import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -11,19 +10,6 @@ import { redirect } from 'next/navigation';
 import { addSession } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { AddSessionSchema } from '@/lib/validationSchemas';
-import { Course } from '@prisma/client';
-
-const onSubmit = async (session: {
-  courseTitle: string;
-  location: string;
-  date: string;
-  desc: string;
-  partySize: number }) => {
-  await addSession(session);
-  swal('Success', 'Your course has been added', 'success', {
-    timer: 2000,
-  });
-};
 
 /// Add a session to the database
 /// The form takes in the course title, location, date, description, and party size
@@ -37,6 +23,18 @@ const AddSessionForm: React.FC = () => {
   const currentUser = session?.user?.email || '';
   console.log(currentUser);
 
+  const onSubmit = async (data: {
+    courseTitle: string;
+    location: string;
+    date: string;
+    desc: string;
+    partySize: number }) => {
+    await addSession(data, currentUser);
+    swal('Success', 'Your course has been added', 'success', {
+      timer: 2000,
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -45,20 +43,6 @@ const AddSessionForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(AddSessionSchema),
   });
-
-  const [courses, setCourses] = useState<Course[]>([]);
-  console.log(courses);
-
-  useEffect(() => {
-    // Fetch courses
-    const fetchCourses = async () => {
-      const response = await fetch('/api/courses'); // Replace with your API endpoint
-      const data = await response.json();
-      setCourses(data);
-    };
-
-    fetchCourses();
-  }, []);
 
   if (status === 'loading') {
     return <LoadingSpinner />;

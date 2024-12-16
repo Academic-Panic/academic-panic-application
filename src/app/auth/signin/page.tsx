@@ -41,7 +41,7 @@ const SignIn = () => {
                       style={padBelow}
                       type="text"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder="EMAIL"
                     />
                   </Form.Group>
                   <Form.Group>
@@ -50,11 +50,11 @@ const SignIn = () => {
                       style={padBelow}
                       type="password"
                       className="form-control"
-                      placeholder="Password"
+                      placeholder="PASSWORD"
                     />
                   </Form.Group>
                   <Button type="submit" className="mt-3">
-                    Sign In
+                    SIGN IN
                   </Button>
                 </Form>
               </Card.Body>

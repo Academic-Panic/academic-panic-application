@@ -52,19 +52,19 @@ const SignUp = () => {
 
   return (
     <main>
-      <Container style={{ opacity: 0.75, paddingTop: '6%' }}>
+      <Container style={{ opacity: 0.75, paddingTop: '6%', fontFamily: 'AmollaRaspersItalic' }}>
         <Row className="justify-content-center">
           <Col xs={5}>
             <Card>
               <Card.Body>
-                <h1 style={padBelow}>Panicker Application</h1>
+                <h1 style={padBelow}>PANICKER APPLICATION</h1>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   <Form.Group className="form-group" style={padBelow}>
                     <input
                       type="text"
                       {...register('username')}
                       className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-                      placeholder="Username"
+                      placeholder="USERNAME"
                     />
                     <div className="invalid-feedback">{errors.username?.message}</div>
                   </Form.Group>
@@ -73,7 +73,7 @@ const SignUp = () => {
                       type="text"
                       {...register('email')}
                       className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                      placeholder="Email"
+                      placeholder="EMAIL"
                     />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
@@ -83,7 +83,7 @@ const SignUp = () => {
                       type="password"
                       {...register('password')}
                       className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                      placeholder="Password"
+                      placeholder="PASSWORD"
                     />
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
@@ -92,7 +92,7 @@ const SignUp = () => {
                       type="password"
                       {...register('confirmPassword')}
                       className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
-                      placeholder="Confirm Password"
+                      placeholder="CONFIRM PASSWORD"
                     />
                     <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                   </Form.Group>
@@ -100,12 +100,12 @@ const SignUp = () => {
                     <Row>
                       <Col>
                         <Button type="submit" className="btn btn-primary">
-                          Register
+                          REGISTER
                         </Button>
                       </Col>
                       <Col>
                         <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
-                          Reset
+                          RESET
                         </Button>
                       </Col>
                     </Row>

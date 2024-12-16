@@ -25,6 +25,7 @@ const ListSession = async () => {
       },
     },
   });
+  const publicSessions = await prisma.session.findMany();
   // console.log(stuff);
   return (
     <main>
@@ -44,6 +45,27 @@ const ListSession = async () => {
               </thead>
               <tbody>
                 {sessions.map((item) => (
+                  <ViewSession key={item.id} {...item} />
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h1 className="text-white text-center">PUBLIC PANIC SESSIONS</h1>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>COURSE</th>
+                  <th>LOCATION</th>
+                  <th>DATE</th>
+                  <th>DESCRIPTION</th>
+                  <th>MAX CAPACITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                {publicSessions.map((item) => (
                   <ViewSession key={item.id} {...item} />
                 ))}
               </tbody>

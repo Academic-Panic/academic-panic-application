@@ -8,7 +8,7 @@ const ViewSession = ({ id, courseTitle, location, date, desc, partySize }: Sessi
       <Link href={`/editSession/${id}`}>{courseTitle}</Link>
     </td>
     <td>{location}</td>
-    <td>{date}</td>
+    <td>{date.replace('T', ' ')}</td>
     <td>{desc}</td>
     <td>{partySize}</td>
   </tr>

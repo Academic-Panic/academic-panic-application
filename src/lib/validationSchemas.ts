@@ -36,7 +36,7 @@ export const EditCourseSchema = Yup.object({
 
 export const AddSessionSchema = Yup.object({
   courseTitle: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'), // Temporary measure to quickly allow for course input
-  location: Yup.string().oneOf(['ICSpace', 'POST 2nd Floor', 'Computer Lab', 'Hamilton Library']).required(),
+  location: Yup.string().required().oneOf(['ICSpace', 'POST 2nd Floor', 'Holmes Computer Lab', 'Hamilton Library']),
   date: Yup.string().required(),
   desc: Yup.string().required(),
   partySize: Yup.number().positive().required(),
@@ -44,8 +44,9 @@ export const AddSessionSchema = Yup.object({
 
 export const EditSessionSchema = Yup.object({
   id: Yup.number().required(),
+  owner: Yup.string().required(),
   courseTitle: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'), // Temporary measure to quickly allow for course input
-  location: Yup.string().oneOf(['ICSpace', 'POST2ndFloor', 'ComputerLab', 'HamiltonLibrary']).required(),
+  location: Yup.string().required().oneOf(['ICSpace', 'POST 2nd Floor', 'Holmes Computer Lab', 'Hamilton Library']),
   date: Yup.string().required(),
   desc: Yup.string().required(),
   partySize: Yup.number().positive().required(),

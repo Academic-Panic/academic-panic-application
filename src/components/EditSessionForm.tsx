@@ -1,42 +1,30 @@
 'use client';
 
-/* eslint-disable max-len */
-import { useSession } from 'next-auth/react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
-import { redirect } from 'next/navigation';
-import { addSession } from '@/lib/dbActions';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import { AddSessionSchema } from '@/lib/validationSchemas';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Session } from '@prisma/client';
+import { EditSessionSchema } from '@/lib/validationSchemas';
+import { editSession } from '@/lib/dbActions';
 
-/// Add a session to the database
-/// The form takes in the course title, location, date, description, and party size
-/// @param {string} courseTitle - The title of the course
-/// @param {string} location - The location of the course
-/// @param {string} date - The date of the course
-/// @param {string} desc - The description of the course
-/// @param {number} partySize - The number of people in the course
-const AddSessionForm: React.FC = () => {
-  const { data: session, status } = useSession();
-  const currentUser = session?.user?.email || '';
-  console.log(currentUser);
+const EditSessionForm = ({ session, oldID }: { session: Session, oldID: number }) => {
+  const { data: webSession, status } = useSession();
+  console.log(status);
 
-  const onSubmit = async (data: {
-    courseTitle: string;
-    location: string;
-    date: string;
-    desc: string;
-    partySize: number }) => {
+  const onSubmit = async (data: Session) => {
+  // console.log(`onSubmit data: ${JSON.stringify(data, null, 2)}`);
     // Automatically format title
+    // eslint-disable-next-line max-len
     const sepIndex = data.courseTitle.indexOf('-') !== -1 ? data.courseTitle.indexOf('-') : data.courseTitle.indexOf(' ');
     const upperAlpha = data.courseTitle.slice(0, sepIndex).toUpperCase();
     const nums = data.courseTitle.slice(sepIndex + 1).toUpperCase();
     // eslint-disable-next-line no-param-reassign
     data.courseTitle = `${upperAlpha}-${nums}`;
-    await addSession(data, currentUser);
-    swal('Success', 'Your course has been added', 'success', {
+    //
+    await editSession(oldID, data, webSession?.user?.email as string);
+    swal('Success', 'Your item has been updated', 'success', {
       timer: 2000,
     });
   };
@@ -46,39 +34,56 @@ const AddSessionForm: React.FC = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(AddSessionSchema),
+  } = useForm<Session>({
+    resolver: yupResolver(EditSessionSchema),
   });
-
-  if (status === 'loading') {
-    return <LoadingSpinner />;
-  }
-  if (status === 'unauthenticated') {
-    redirect('/auth/signin');
-  }
+  // console.log(stuff);
 
   return (
     <Container className="py-3">
       <Row className="justify-content-center">
         <Col xs={5}>
-          <Card style={{ opacity: 0.75, paddingTop: '6%' }}>
-            <Col className="text-center">
-              <h2>Create Session</h2>
-            </Col>
+          <Col className="text-center">
+            <h2 className="text-white">Edit Session</h2>
+          </Col>
+          <Card>
             <Card.Body>
+              <Form.Group>
+                {/* Hidden input to preserve owner in session creation */}
+                <input
+                  type="hidden"
+                  defaultValue={session.owner}
+                  {...register('owner')}
+                  className={`form-control ${errors.owner ? 'is-invalid' : ''}`}
+                />
+                <div className="invalid-feedback">{errors.owner?.message}</div>
+              </Form.Group>
+              <Form.Group>
+                {/* Hidden input to preserve ID in session creation */}
+                <input
+                  type="hidden"
+                  defaultValue={session.id}
+                  {...register('id')}
+                  className={`form-control ${errors.id ? 'is-invalid' : ''}`}
+                />
+                <div className="invalid-feedback">{errors.id?.message}</div>
+              </Form.Group>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group>
                   <Form.Label>Date</Form.Label>
                   <input
                     type="datetime-local"
+                    defaultValue={session.date}
                     {...register('date')}
                     className={`form-control ${errors.date ? 'is-invalid' : ''}`}
                   />
+                  <div className="invalid-feedback">{errors.date?.message}</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Course</Form.Label>
                   <input
-                    type="string"
+                    type="text"
+                    defaultValue={session.courseTitle}
                     {...register('courseTitle')}
                     className={`form-control ${errors.courseTitle ? 'is-invalid' : ''}`}
                   />
@@ -86,23 +91,23 @@ const AddSessionForm: React.FC = () => {
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Location</Form.Label>
-                  <select {...register('location')} className={`form-control ${errors.location ? 'is-invalid' : ''}`}>
+                  <select
+                    {...register('location')}
+                    className={`form-control ${errors.location ? 'is-invalid' : ''}`}
+                    defaultValue={session.location}
+                  >
                     <option value="ICSpace">ICSpace</option>
                     <option value="POST 2nd Floor">POST 2nd Floor</option>
                     <option value="Holmes Computer Lab">Holmes Computer Lab</option>
                     <option value="Hamilton Library">Hamilton Library</option>
                   </select>
-                  {/* <input
-                    type="string"
-                    {...register('location')}
-                    className={`form-control ${errors.location ? 'is-invalid' : ''}`}
-                  /> */}
                   <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
                 <Form.Group>
                   <Form.Label>Max Party Size</Form.Label>
                   <input
                     type="number"
+                    defaultValue={session.partySize}
                     {...register('partySize')}
                     className={`form-control ${errors.partySize ? 'is-invalid' : ''}`}
                   />
@@ -112,12 +117,13 @@ const AddSessionForm: React.FC = () => {
                   <Form.Label>Description</Form.Label>
                   <input
                     type="text"
+                    defaultValue={session.desc}
                     {...register('desc')}
                     className={`form-control ${errors.desc ? 'is-invalid' : ''}`}
                   />
                   <div className="invalid-feedback">{errors.desc?.message}</div>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
                       <Button type="submit" variant="primary">
@@ -140,4 +146,4 @@ const AddSessionForm: React.FC = () => {
   );
 };
 
-export default AddSessionForm;
+export default EditSessionForm;

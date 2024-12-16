@@ -4,7 +4,7 @@ import { Course } from '@prisma/client';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
-import EditCourseForm from '@/components/EditStuffForm';
+import EditCourseForm from '@/components/EditCourseForm';
 
 export default async function EditCoursePage({ params }: { params: { id: string | string[] } }) {
   // Protect the page, only logged in users can access it.

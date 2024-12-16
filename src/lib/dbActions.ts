@@ -66,7 +66,7 @@ export async function deleteCourse(id: number) {
 }
 
 export async function addSession(session: {
-  courseTitle: string; location: string, date: string; desc: string; partySize: number; owner: string;
+  courseTitle: string; location: string, date: string; desc: string; partySize: number;
 }, ownerEmail: string) {
   const newSession = await prisma.session.create({
     data: {
@@ -87,18 +87,20 @@ export async function addSession(session: {
   redirect('/listSession');
 }
 
-export async function editSession(session: Session) {
-  await prisma.session.update({
-    where: { id: session.id },
-    data: {
-      courseTitle: session.courseTitle,
-      location: session.location,
-      owner: session.owner,
-      date: session.date,
-      desc: session.desc,
-      partySize: session.partySize,
-    },
-  });
+// Delete old session and create the new one, for hosts
+export async function editSession(oldSessionID: number, session: Session, email: string) {
+  await prisma.session.delete({
+    where: { id: oldSessionID } });
+  addSession(session, email);
+
+  // Perform mutual delisting
+  // await prisma.session.update({
+  //   where: {
+  //     id: oldSessionID,
+  //   },
+  //   data: { attendees: { disconnect: { email } } },
+  // });
+  // addSession(session, email);
   // After updating, redirect to the list page
   redirect('/listSession');
 }

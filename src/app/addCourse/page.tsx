@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import AddCourseForm from '@/components/AddStuffForm';
+import AddCourseForm from '@/components/AddCourseForm';
 
 const AddCourse = async () => {
   // Protect the page, only logged in users can access it.

@@ -1,10 +1,10 @@
 import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
-import { Course } from '@prisma/client';
+import { Session } from '@prisma/client';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import { prisma } from '@/lib/prisma';
-import EditCourseForm from '@/components/EditStuffForm';
+import EditSessionForm from '@/components/EditSessionForm';
 
 export default async function EditCoursePage({ params }: { params: { id: string | string[] } }) {
   // Protect the page, only logged in users can access it.
@@ -19,17 +19,17 @@ export default async function EditCoursePage({ params }: { params: { id: string 
   const id = Number(Array.isArray(params?.id) ? params?.id[0] : params?.id);
 
   // TODO: Modify where clause below to lookup props of selected course
-  const course: Course | null = await prisma.course.findUnique({
+  const userSession: Session | null = await prisma.session.findUnique({
     where: { id },
   });
   // console.log(stuff);
-  if (!course) {
+  if (!userSession) {
     return notFound();
   }
 
   return (
     <main>
-      <EditCourseForm course={course} />
+      <EditSessionForm session={userSession} oldID={id} />
     </main>
   );
 }

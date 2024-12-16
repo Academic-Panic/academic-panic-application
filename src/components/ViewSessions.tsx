@@ -5,7 +5,7 @@ import Link from 'next/link';
 const ViewSession = ({ id, courseTitle, location, date, desc, partySize }: Session) => (
   <tr>
     <td>
-      <Link href={`/edit/${id}`}>{courseTitle}</Link>
+      <Link href={`/editSession/${id}`}>{courseTitle}</Link>
     </td>
     <td>{location}</td>
     <td>{date}</td>

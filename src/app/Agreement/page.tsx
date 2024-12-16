@@ -2,7 +2,8 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
-import PanicSessionAgreement from '@/components/PanicSessionAgreement'
+import PanicSessionAgreement from '@/components/PanicSessionAgreement';
+import Cookies from 'js-cookie';
 
 const AgreementPage: React.FC = () => {
   const router = useRouter();
@@ -10,15 +11,25 @@ const AgreementPage: React.FC = () => {
 
   const handleAgree = () => {
     if (agreed) {
-      router.push('src/app/AddSession/page.tsx'); // Replace with the actual path for creating a study session
+      Cookies.set('agreed', 'true'); // Set a cookie to remember agreement
+      router.push('../addSession/page.tsx');
     } else {
       alert('You must agree to the terms before proceeding.');
     }
   };
 
   return (
-    <Container>
-      <PanicSessionAgreement/>
+    <Container className="mt-5">
+      <PanicSessionAgreement />
+      <Form.Check
+        type="checkbox"
+        label="I agree to the terms and conditions"
+        onChange={(e) => setAgreed(e.target.checked)}
+        className="mb-3"
+      />
+      <Button variant="primary" onClick={handleAgree}>
+        Proceed
+      </Button>
     </Container>
   );
 };

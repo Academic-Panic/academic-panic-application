@@ -87,6 +87,7 @@ export async function editSession(session: Session) {
     data: {
       courseTitle: session.courseTitle,
       location: session.location,
+      owner: session.owner,
       date: session.date,
       desc: session.desc,
       partySize: session.partySize,

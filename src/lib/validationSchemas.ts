@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import * as Yup from 'yup';
 
 // export const AddStuffSchema = Yup.object({
@@ -17,7 +18,7 @@ import * as Yup from 'yup';
 //
 
 export const AddCourseSchema = Yup.object({
-  title: Yup.string().required().matches(/^\w+[- ]\d+$/, 'Alphabetical, space/hyphen, numerical'),
+  title: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'),
   section: Yup.number().positive().required(),
   semester: Yup.string().required().oneOf(['Spring', 'Summer', 'Fall']),
   year: Yup.number().required().positive(),
@@ -26,7 +27,7 @@ export const AddCourseSchema = Yup.object({
 
 export const EditCourseSchema = Yup.object({
   id: Yup.number().required(),
-  title: Yup.string().required().matches(/^\w+[- ]\d+$/, 'Alphabetical, space/hyphen, numerical'),
+  title: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'),
   section: Yup.number().positive().required(),
   semester: Yup.string().required().oneOf(['Spring', 'Summer', 'Fall']),
   year: Yup.number().positive().required(),
@@ -34,7 +35,7 @@ export const EditCourseSchema = Yup.object({
 });
 
 export const AddSessionSchema = Yup.object({
-  courseTitle: Yup.string().required(), // Temporary measure to quickly allow for course input
+  courseTitle: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'), // Temporary measure to quickly allow for course input
   location: Yup.string().oneOf(['ICSpace', 'POST 2nd Floor', 'Computer Lab', 'Hamilton Library']).required(),
   date: Yup.string().required(),
   desc: Yup.string().required(),
@@ -43,7 +44,7 @@ export const AddSessionSchema = Yup.object({
 
 export const EditSessionSchema = Yup.object({
   id: Yup.number().required(),
-  courseTitle: Yup.string().required(), // Temporary measure to quickly allow for course input
+  courseTitle: Yup.string().required().matches(/^\w+[- ]\d+\w?$/, 'Alphabetical, space/hyphen, numerical letter(?)'), // Temporary measure to quickly allow for course input
   location: Yup.string().oneOf(['ICSpace', 'POST2ndFloor', 'ComputerLab', 'HamiltonLibrary']).required(),
   date: Yup.string().required(),
   desc: Yup.string().required(),

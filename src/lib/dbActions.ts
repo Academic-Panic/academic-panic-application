@@ -66,7 +66,7 @@ export async function deleteCourse(id: number) {
 }
 
 export async function addSession(session: {
-  courseTitle: string; location: string, date: string; desc: string; partySize: number
+  courseTitle: string; location: string, date: string; desc: string; partySize: number;
 }, ownerEmail: string) {
   const newSession = await prisma.session.create({
     data: {

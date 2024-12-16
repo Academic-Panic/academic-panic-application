@@ -18,7 +18,7 @@ const AddCourseForm: React.FC = () => {
     // Automatically format title
     const sepIndex = data.title.indexOf('-') !== -1 ? data.title.indexOf('-') : data.title.indexOf(' ');
     const upperAlpha = data.title.slice(0, sepIndex).toUpperCase();
-    const nums = data.title.slice(sepIndex + 1);
+    const nums = data.title.slice(sepIndex + 1).toUpperCase();
     // eslint-disable-next-line no-param-reassign
     data.title = `${upperAlpha}-${nums}`;
     //

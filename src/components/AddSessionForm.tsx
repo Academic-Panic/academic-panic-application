@@ -29,6 +29,12 @@ const AddSessionForm: React.FC = () => {
     date: string;
     desc: string;
     partySize: number }) => {
+    // Automatically format title
+    const sepIndex = data.courseTitle.indexOf('-') !== -1 ? data.courseTitle.indexOf('-') : data.courseTitle.indexOf(' ');
+    const upperAlpha = data.courseTitle.slice(0, sepIndex).toUpperCase();
+    const nums = data.courseTitle.slice(sepIndex + 1).toUpperCase();
+    // eslint-disable-next-line no-param-reassign
+    data.courseTitle = `${upperAlpha}-${nums}`;
     await addSession(data, currentUser);
     swal('Success', 'Your course has been added', 'success', {
       timer: 2000,

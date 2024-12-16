@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma';
 import ViewSession from '@/components/ViewSessions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
+import { warn } from 'console';
 
 /** Render a list of stuff for the logged in user. */
 const ListSession = async () => {
@@ -15,18 +16,33 @@ const ListSession = async () => {
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
+  const userEmail = session!.user!.email as string; // Beating typescript into submission
+
   // Find courses in which the user is a member of
-  const sessions = await prisma.session.findMany({
+  const memberSessions = await prisma.session.findMany({
     where: {
       attendees: {
         some: {
-          email: session!.user!.email as string, // Beating typescript into submission
+          email: userEmail,
         },
       },
     },
   });
-  const publicSessions = await prisma.session.findMany();
-  // console.log(stuff);
+
+  // Courses that the user is in for finding the appropriate public sessions
+  const attendingCourses = await prisma.course.findMany({
+    where: {
+      user: { some: { email: userEmail } },
+    },
+  });
+  const publicSessions = await prisma.session.findMany({
+    where: {
+      courseTitle: {
+        in: attendingCourses.map(item => item.title),
+      },
+      owner: { not: userEmail },
+    },
+  });
   return (
     <main>
       <Container id="list" fluid className="p-4" style={{ fontFamily: 'AmollaRaspersItalic' }}>
@@ -44,7 +60,7 @@ const ListSession = async () => {
                 </tr>
               </thead>
               <tbody>
-                {sessions.map((item) => (
+                {memberSessions.map((item) => (
                   <ViewSession key={item.id} {...item} />
                 ))}
               </tbody>

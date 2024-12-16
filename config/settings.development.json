@@ -1,37 +1,140 @@
 {
-  "defaultAccounts": [
-    { "username": "admin", "email": "admin@foo.com", "password": "changeme", "role": "ADMIN" },
-    { "username": "john", "email": "john@foo.com", "password": "changeme" }
-    { "username": "GalacticPinapple", "email": "admin@foo.com", "password": "changeme", "role": "ADMIN" },
-    { "username": "Velvetcactus", "@hawaii.edu": "", "password": "changeme" }
-    { "username": "JellyMeteor", "email": "@hawaii.edu", "password": "changeme" }
-    { "username": "QuantumTaco", "email": "qtaco@hawaii.edu", "password": "changeme" }
-    { "username": "MysticChurro", "email": "ChurroM@hawaii.edu", "password": "changeme" }
-    { "username": "CosmicSquirrel77", "email": "coss@hawaii.edu", "password": "changeme" }
-    { "username": "SolarRavenX", "email": "solarr@hawaii.edu", "password": "changeme" }
-    { "username": "Zeniscribbles", "email": "aze@hawaii.edu", "password": "changeme", "role": "ADMIN" }
-    { "username": "ChansenIsLoud", "email": "ctano68@hawaii.edu", "password": "changeme", "role": "ADMIN" }
-    { "username": "j4vk", "email": "elwais@hawaii.edu", "password": "changeme", "role": "ADMIN" }
-    { "username": "JoshTheCosmicOtter", "email": "jksamont@hawaii.edu", "password": "changeme", "role": "ADMIN" }
-  ],
-
-  "defaultCourses": [
-    {"title": "ICS-314", "section": "2", "semester": "Fall", "year": "2024", "instructor": "David Connor"}
-    {"title": "ECE-468", "section": "1", "semester": "Fall", "year": "2024", "instructor": "Galen Sasaki"}
-    {"title": "ECE-660", "section": "1", "semester": "Fall", "year": "2024", "instructor": "Liuwan Zhu"}
-    {"title": "ECE-342", "section": "1", "semester": "Fall", "year": "2024", "instructor": "June Zhang"}
-    {"title": "ECE-343", "section": "1", "semester": "Fall", "year": "2024", "instructor": "Anders Host-Madsen"}
-    {"title": "ECE-371", "section": "1", "semester": "Fall", "year": "2024", "instructor": "Wayne Shiroma"}
-    {"title": "ECE-361", "section": "1", "semester": "Fall", "year": "2024", "instructor": "Haofan Cai"}
-    {"title": "ECE-326", "section": "2", "semester": "Fall", "year": "2024", "instructor": "Jeffery Weldon"}
-    {"title": "ECE-362", "section": "2", "semester": "Fall", "year": "2024", "instructor": "Galen Sasaki"}
-  ],
-
-  
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ]
+    "defaultAccounts": [
+        {
+            "username": "admin",
+            "email": "admin@foo.com",
+            "password": "changeme",
+            "role": "ADMIN"
+        },
+        {
+            "username": "john",
+            "email": "john@foo.com",
+            "password": "changeme"
+        },
+        {
+            "username": "GalacticPinapple",
+            "email": "gpine@foo.com",
+            "password": "changeme",
+            "role": "ADMIN"
+        },
+        {
+            "username": "Velvetcactus",
+            "email": "vcactus@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "JellyMeteor",
+            "email": "jmeteor@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "QuantumTaco",
+            "email": "qtaco@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "MysticChurro",
+            "email": "churrom@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "CosmicSquirrel77",
+            "email": "coss@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "SolarRavenX",
+            "email": "solarr@hawaii.edu",
+            "password": "changeme"
+        },
+        {
+            "username": "Zeniscribbles",
+            "email": "aze@hawaii.edu",
+            "password": "changeme",
+            "role": "ADMIN"
+        },
+        {
+            "username": "ChansenIsLoud",
+            "email": "ctano68@hawaii.edu",
+            "password": "changeme",
+            "role": "ADMIN"
+        },
+        {
+            "username": "j4vk",
+            "email": "elwais@hawaii.edu",
+            "password": "changeme",
+            "role": "ADMIN"
+        },
+        {
+            "username": "JoshTheCosmicOtter",
+            "email": "jksamont@hawaii.edu",
+            "password": "changeme",
+            "role": "ADMIN"
+        }
+    ],
+    "defaultCourses": [
+        {
+            "title": "ICS-314",
+            "section": "2",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "David Connor"
+        },
+        {
+            "title": "ECE-468",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Galen Sasaki"
+        },
+        {
+            "title": "ECE-660",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Liuwan Zhu"
+        },
+        {
+            "title": "ECE-342",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "June Zhang"
+        },
+        {
+            "title": "ECE-343",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Anders Host-Madsen"
+        },
+        {
+            "title": "ECE-371",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Wayne Shiroma"
+        },
+        {
+            "title": "ECE-361",
+            "section": "1",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Haofan Cai"
+        },
+        {
+            "title": "ECE-326",
+            "section": "2",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Jeffery Weldon"
+        },
+        {
+            "title": "ECE-362",
+            "section": "2",
+            "semester": "Fall",
+            "year": "2024",
+            "instructor": "Galen Sasaki"
+        }
+    ]
 }

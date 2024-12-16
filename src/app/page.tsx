@@ -35,22 +35,40 @@ const LandingPage = () => (
 );
 
 const HomePage = () => (
-  <main>
+  <main className="panic-board">
     <Container
       id="landing-page"
       fluid
-      className="d-flex justify-content-center align-items-center text-center vh-100"
+      // className="d-flex justify-content-center align-items-center text-center vh-100"
       style={{
         fontFamily: 'AmollaRaspersItalic',
+        backgroundSize: 'cover',
+        height: '100vh',
       }}
     >
-      <Row className="text-box p-4 rounded">
+      <Row style={{ height: '55%' }}>
+        <Col className="text-center pt-3" style={{ color: 'white' }}>
+          <h2>TRAUMA IN PROGRESS</h2>
+        </Col>
+        <Col className="text-center pt-3" style={{ color: 'white' }}>
+          <h2>TRAUMA BONDS</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="text-center pt-3" style={{ color: 'white' }}>
+          <h2>REPRESSED MEMORIES</h2>
+        </Col>
+        <Col className="text-center pt-3" style={{ color: 'white' }}>
+          <h2>PUBLIC PANIC SESSION</h2>
+        </Col>
+      </Row>
+      {/* <Row className="text-box p-4 rounded">
         <Col className="d-flex flex-column justify-content-center align-items-center text-black">
           <h1>PANICK BOARD</h1>
           <p>WELCOME PANICKER</p>
           <p>READY TO GET YOUR STUDY ON?</p>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   </main>
 );

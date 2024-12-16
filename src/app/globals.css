@@ -80,3 +80,18 @@ body .navbar {
   font-weight: light; /* Optional: normal, bold, etc. */
   font-style: normal;  /* Optional: normal, italic, etc. */
 }
+
+.panic-board {
+  background: url('../../public/PanicBoard.png'); /* Specify the image path */
+  background-size: cover; /* Ensures the image covers the entire background */
+}
+
+.panic-app {
+  background: url('../../public/PanikerAPP.png'); /* Specify the image path */
+  background-size: cover; /* Ensures the image covers the entire background */
+}
+
+.panic-login {
+  background: url('../../public/PanikerAPP.png'); /* Specify the image path */
+  background-size: cover; /* Ensures the image covers the entire background */
+}

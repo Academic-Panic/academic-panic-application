@@ -51,8 +51,14 @@ const SignUp = () => {
   const padBelow = { marginBottom: '15pt' }; // Style to provide fixed padding
 
   return (
-    <main>
-      <Container style={{ opacity: 0.75, paddingTop: '6%', fontFamily: 'AmollaRaspersItalic' }}>
+    <main className="panic-app">
+      <Container style={{
+        opacity: 0.75,
+        paddingTop: '6%',
+        fontFamily: 'AmollaRaspersItalic',
+        backgroundSize: 'cover',
+        height: '100vh' }}
+      >
         <Row className="justify-content-center">
           <Col xs={5}>
             <Card>

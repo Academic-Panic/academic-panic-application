@@ -1,53 +1,58 @@
-/* eslint-disable max-len */
 import { getServerSession } from 'next-auth';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
+import { prisma } from '@/lib/prisma';
+import ViewSession from '@/components/ViewSessions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
-import SessionCard from '@/components/SessionCard';
-import { prisma } from '@/lib/prisma';
-import { Session } from '@prisma/client';
 
-/** Render a list of sessions for the logged in user. */
-const ListPage = async () => {
+/** Render a list of stuff for the logged in user. */
+const ListSession = async () => {
   // Protect the page, only logged in users can access it.
-  const userSession = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   loggedInProtectedPage(
-    userSession as {
+    session as {
       user: { email: string; id: string; randomKey: string };
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  const owner = userSession?.user!.email ? userSession.user.email : '';
-  const panicSession: Session[] = await prisma.session.findMany({
+  // Find courses in which the user is a member of
+  const sessions = await prisma.session.findMany({
     where: {
-      owner,
+      attendees: {
+        some: {
+          email: session!.user!.email as string, // Beating typescript into submission
+        },
+      },
     },
   });
-  const courses = await prisma.course.findMany({
-    where: {
-      owner,
-    },
-  });
+  // console.log(stuff);
   return (
     <main>
-      <Container id="list" fluid className="py-3">
-        <Container>
-          <Row>
-            <Col>
-              <h2 className="text-center">Panic Sessions</h2>
-              <Row xs={1} md={2} lg={3} className="g-4">
-                {panicSession.map((session) => (
-                  <Col key={session.courseTitle + session.location}>
-                    <SessionCard session={session} courses={courses.filter(course => (course.id === session.courseTitle))} />
-                  </Col>
+      <Container id="list" fluid className="p-4" style={{ fontFamily: 'AmollaRaspersItalic' }}>
+        <Row>
+          <Col>
+            <h1 className="text-white text-center">MY PANIC SESSIONS</h1>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>COURSE</th>
+                  <th>LOCATION</th>
+                  <th>DATE</th>
+                  <th>DESCRIPTION</th>
+                  <th>MAX CAPACITY</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sessions.map((item) => (
+                  <ViewSession key={item.id} {...item} />
                 ))}
-              </Row>
-            </Col>
-          </Row>
-        </Container>
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
       </Container>
     </main>
   );
 };
 
-export default ListPage;
+export default ListSession;

@@ -22,6 +22,7 @@ const AddCourseForm: React.FC = () => {
     // eslint-disable-next-line no-param-reassign
     data.title = `${upperAlpha}-${nums}`;
     //
+    console.log(`${session!.user!.email}`);
     await addCourse(data, session!.user!.email as string);
     swal('Success', 'Your item has been added', 'success', {
       timer: 2000,

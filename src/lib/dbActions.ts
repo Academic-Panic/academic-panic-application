@@ -67,15 +67,21 @@ export async function deleteCourse(id: number) {
 
 export async function addSession(session: {
   courseTitle: string; location: string, date: string; desc: string; partySize: number
-}) {
-  await prisma.session.create({
+}, ownerEmail: string) {
+  const newSession = await prisma.session.create({
     data: {
       courseTitle: session.courseTitle,
       location: session.location,
       date: session.date,
       desc: session.desc,
       partySize: session.partySize,
+      owner: ownerEmail,
     },
+  });
+  // Perform mutual listing
+  await prisma.session.update({
+    where: { id: newSession.id },
+    data: { attendees: { connect: { email: ownerEmail } } },
   });
   // After adding, redirect to the list page
   redirect('/listSession');
@@ -87,6 +93,7 @@ export async function editSession(session: Session) {
     data: {
       courseTitle: session.courseTitle,
       location: session.location,
+      owner: session.owner,
       date: session.date,
       desc: session.desc,
       partySize: session.partySize,

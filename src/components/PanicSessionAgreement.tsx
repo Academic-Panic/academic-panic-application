@@ -17,6 +17,7 @@ const PanicSessionAgreement: React.FC = () => (
       fontFamily: 'AmollaRaspersItalic',
       // height: '100vh',
       // textAlign: 'center', // Optional: Centers text inside the content
+      paddingBottom: '30px',
     }}
   >
     <h1
@@ -100,13 +101,14 @@ const PanicSessionAgreement: React.FC = () => (
       <Button variant="success" className="mx-2">
         Signup
       </Button>
-    </div> */}
+    </div>
     <Button variant="warning" className="mx-2" size="lg" style={{ marginTop: '10px' }}>
       I AGREE
     </Button>
     <Button variant="link" style={{ color: 'white' }}>
       CANCEL
     </Button>
+    */}
   </div>
 );
 
